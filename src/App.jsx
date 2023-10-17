@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom"
-import "./App.scss"
 import OnboardingScreen from "./components/pages/OnboardingScreen/OnboardingScreen.jsx"
 import OnboardingTutorial from "./components/pages/OnboardingTutorial/OnboardingTutorial.jsx"
 import Register from "./components/pages/Register/Register.jsx"
