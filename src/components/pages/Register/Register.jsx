@@ -1,33 +1,55 @@
 import React from "react"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import TermsAndService from "./TermsAndService.jsx"
 
 function Register() {
   const [showTerms, setShowTerms] = useState(false)
 
-  function submitRegistration(event) {
+  const navigator = useNavigate()
+
+  async function submitRegistration(event) {
     event.preventDefault()
+    const form = new FormData(event.target)
+
+    const response = await fetch(
+      import.meta.env.VITE_SERVER + "api/auth/register",
+      {
+        method: "POST",
+        body: form,
+      }
+    )
+    if (response.ok) {
+      console.log("Registration successful!")
+      console.log(response)
+      navigator("/account")
+    } else {
+      console.log("Registration failed.")
+    }
   }
 
   function openTerms() {
-    setShowTerms((prev) => !prev)
+    setShowTerms(true)
+  }
+
+  function closeTerms() {
+    setShowTerms(false)
   }
 
   return (
     <div>
       <h1>Create an account</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod,
-        sapien vel bibendum bibendum, velit sapien bibendum sapien, vel bibendum
-        sapien velit sed sapien.
+        Lorem ipsum dolor sit amet, consectetur adip sicing elit, sed do
+        eiusmod.
       </p>
       <form onSubmit={submitRegistration}>
         <label htmlFor="name">Name</label>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="username"
+          name="username"
+          placeholder="Name"
           required
         />
         <label htmlFor="email">Email</label>
@@ -35,6 +57,7 @@ function Register() {
           type="email"
           id="email"
           name="email"
+          placeholder="Email"
           required
         />
         <label htmlFor="password">Password</label>
@@ -42,6 +65,7 @@ function Register() {
           type="password"
           id="password"
           name="password"
+          placeholder="Password"
           required
         />
         <input
@@ -50,10 +74,14 @@ function Register() {
           name="terms"
           required
         />
-        <label htmlFor="terms">
-          Agree to our <span onClick={openTerms}>Terms and Service</span>
-        </label>
-        {showTerms && <TermsAndService />}
+        <label htmlFor="terms"></label>
+        Agree to our <span onClick={openTerms}>Terms and Service</span>
+        {showTerms && (
+          <TermsAndService
+            open={showTerms}
+            close={closeTerms}
+          />
+        )}
         <button type="submit">Register Now</button>
       </form>
       <p>
