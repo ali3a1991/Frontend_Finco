@@ -1,11 +1,7 @@
 import "./App.scss"
 
 function App() {
-  return (
-    <>
-      <h1>home</h1>
-    </>
-  )
+  return <></>
 }
 
 export default App
