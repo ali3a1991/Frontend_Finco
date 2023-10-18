@@ -7,17 +7,24 @@ import threeDots from "../../../assets/images/threeDots.png"
 import style from "./Home.module.scss"
 import IncomeTrend from "../../shared/Buttons/Income/IncomeTrend/IncomeTrend.jsx"
 import ExpenseTrend from "../../shared/Buttons/Expense/ExpenseTrend/ExpenseTrend"
+import IncomeButton from "../../shared/Buttons/Income/IncomeButton.jsx"
+import ExpenseButton from "../../shared/Buttons/Expense/ExpenseButton.jsx"
+import CreditCard from "../../shared/CreditCard/CreditCard.jsx"
+import IncomeBigButton from "../../shared/BigButtons/IncomeBigButton"
+import Header from "../../shared/Header/Header.jsx"
+import Navi from "../../shared/Navbar/Navbar.jsx"
 
 function Home() {
   return (
     <div className={style.home}>
-      <IncomeTrend />
+      <Header />
+      {/* <IncomeTrend />
       <ExpenseTrend />
-      <section className={style.homeCreditCard}>
-        <img
-          src={creditCard}
-          alt="Credit Card"
-        />
+      <ExpenseButton />
+      <IncomeButton /> */}
+      {/* <IncomeBigButton /> */}
+      <section>
+        <CreditCard />
       </section>
       <section className={style.homeTotalWallet}>
         <p>Total Wallet</p>
@@ -71,6 +78,7 @@ function Home() {
           </div>
         </div>
       </section>
+      <Navi />
     </div>
   )
 }

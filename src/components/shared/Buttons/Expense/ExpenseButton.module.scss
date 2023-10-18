@@ -1,4 +1,4 @@
-.incomeButton {
+.expenseButton {
   display: flex;
   align-items: center;
   width: 170px;
@@ -10,11 +10,11 @@
     line-height: 1.5;
     padding-left: 1rem;
 
-    .incomeText {
+    .expenseText {
       font-size: 0.8rem;
     }
 
-    .incomeSum {
+    .expenseSum {
       font-weight: 700;
     }
   }
