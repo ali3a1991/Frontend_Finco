@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react"
 import TransactionItem from "../../shared/transactionItem/TransactionItem"
+import Navbar from "../../shared/Navbar/Navbar.jsx"
+import Header from "../../shared/Header/Header.jsx"
 
 function Transaction() {
   const [fetchData, setFetchData] = useState([])
   const [transactions, setTransactions] = useState([])
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_SERVER + "/api/transactions/data", {
+    fetch(import.meta.env.VITE_SERVER + "api/transactions/data", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +31,7 @@ function Transaction() {
       const year = firstDate.getFullYear()
       const month = firstDate.getMonth()
       const day = firstDate.getDate()
-      transactionsArray.push({ date: `${day}-${month}-${year}`, value: 0})
+      transactionsArray.push({ date: `${day}-${month}-${year}`, value: 0 })
       transactionsArray.push(fetchData[0])
 
       for (let i = 1; i < fetchData.length; i++) {
@@ -48,7 +50,7 @@ function Transaction() {
         } else {
           transactionsArray.push({
             date: `${day2}-${month2}-${year2}`,
-            value: 0
+            value: 0,
           })
           transactionsArray.push(fetchData[i])
         }
@@ -58,15 +60,24 @@ function Transaction() {
   }, [fetchData])
 
   return (
-    <main>
-      {transactions.map((transaction, key) =>
-        transaction.value !== 0 ?
-        <TransactionItem key={transaction._id} transaction={transaction}/> : 
-        <div key={key}>
-          <h1>{transaction.date}</h1>
-        </div>
-      )}
-    </main>
+    <>
+      <Header />
+      <main>
+        {transactions.map((transaction, key) =>
+          transaction.value !== 0 ? (
+            <TransactionItem
+              key={transaction._id}
+              transaction={transaction}
+            />
+          ) : (
+            <div key={key}>
+              <h1>{transaction.date}</h1>
+            </div>
+          )
+        )}
+      </main>
+      <Navbar />
+    </>
   )
 }
 
