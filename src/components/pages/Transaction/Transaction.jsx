@@ -14,7 +14,6 @@ function Transaction() {
 
   useEffect(() => {
     if (fetchData.length > 0) {
-
       const transactionsArray = []
       const firstDate = new Date(fetchData[0].date)
 
@@ -48,13 +47,11 @@ function Transaction() {
           transactionsArray.push(fetchData[i])
         } else {
           transactionsArray.push({
-
             date: `${dateStyle(dayItem)}-${dateStyle(
               monthItem + 1
             )}-${yearItem}`,
             value: "",
             day: weekDay,
-
           })
 
           transactionsArray.push(fetchData[i])
@@ -71,15 +68,25 @@ function Transaction() {
   }
 
   return (
-    <main>
-      {transactions.map((transaction, key) =>
-        transaction.value !== "" ? (
-          <TransactionItem key={transaction._id} transaction={transaction} />
-        ) : (
-          <DateItem key={key} transaction={transaction} />
-        )
-      )}
-    </main>
+    <>
+      <Header />
+      <main>
+        {transactions.map((transaction, key) =>
+          transaction.value !== "" ? (
+            <TransactionItem
+              key={transaction._id}
+              transaction={transaction}
+            />
+          ) : (
+            <DateItem
+              key={key}
+              transaction={transaction}
+            />
+          )
+        )}
+      </main>
+      <Navbar />
+    </>
   )
 }
 
