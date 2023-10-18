@@ -3,6 +3,14 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 90px;
-  background-color: rgba(255, 0, 0, 0.11);
+  height: 88px;
+  background-color: #fff;
+  box-shadow: 0px -15px 10px 0px rgba(13, 22, 54, 0.05);
+
+  .image_wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+  }
 }

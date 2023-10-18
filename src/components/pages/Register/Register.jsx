@@ -16,6 +16,7 @@ function Register() {
       import.meta.env.VITE_SERVER + "api/auth/register",
       {
         method: "POST",
+        credentials: "include",
         body: form,
       }
     )

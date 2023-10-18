@@ -1,7 +1,9 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function Login() {
+  const navigator = useNavigate()
+
   async function submitLogin(event) {
     event.preventDefault()
 
@@ -11,12 +13,14 @@ function Login() {
       import.meta.env.VITE_SERVER + "api/auth/login",
       {
         method: "POST",
+        credentials: "include",
         body: form,
       }
     )
     if (response.ok) {
       console.log("Login successful!")
       console.log(response)
+      navigator("/home")
     } else {
       console.log("Login failed.")
     }

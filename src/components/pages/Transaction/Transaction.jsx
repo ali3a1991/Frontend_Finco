@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
 import TransactionItem from "../../shared/transactionItem/TransactionItem"
+import Navbar from "../../shared/Navbar/Navbar.jsx"
+import Header from "../../shared/Header/Header.jsx"
 import DateItem from "../../shared/dateItem/DateItem"
 import usePostFetch from "../../../customHook/usePostFetch"
 
@@ -12,6 +14,7 @@ function Transaction() {
 
   useEffect(() => {
     if (fetchData.length > 0) {
+
       const transactionsArray = []
       const firstDate = new Date(fetchData[0].date)
 
@@ -22,6 +25,7 @@ function Transaction() {
         value: "",
         day: firstDate.getUTCDay(),
       })
+
       transactionsArray.push(fetchData[0])
 
       for (let i = 1; i < fetchData.length; i++) {
@@ -44,11 +48,13 @@ function Transaction() {
           transactionsArray.push(fetchData[i])
         } else {
           transactionsArray.push({
+
             date: `${dateStyle(dayItem)}-${dateStyle(
               monthItem + 1
             )}-${yearItem}`,
             value: "",
             day: weekDay,
+
           })
 
           transactionsArray.push(fetchData[i])
