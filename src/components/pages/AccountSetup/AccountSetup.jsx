@@ -64,6 +64,11 @@ function AccountSetup() {
             placeholder="Expiration Date"
           />
         </div>
+        <input
+          type="text"
+          id="_id"
+          name="_id"
+        />
         <button type="submit">Profile Complete </button>
       </form>
     </div>
