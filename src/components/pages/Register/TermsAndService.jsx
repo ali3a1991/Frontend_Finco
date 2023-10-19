@@ -1,9 +1,9 @@
 import React from "react"
-import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Modal from "@mui/material/Modal"
 import IconButton from "@mui/material/IconButton"
 import CloseIcon from "@mui/icons-material/Close"
+import Box from "@mui/material/Box"
 
 function TermsAndService({ open, close }) {
   const style = {
