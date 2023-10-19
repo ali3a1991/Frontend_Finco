@@ -1,5 +1,9 @@
 import React from "react"
 import { Link, useNavigate } from "react-router-dom"
+import style from "./Login.module.scss"
+import Logo from "../../../assets/images/Logo.png"
+import TextField from "@mui/material/TextField"
+import InputField from "../../shared/Input/EMail/InputField.jsx"
 
 function Login() {
   const navigator = useNavigate()
@@ -27,30 +31,37 @@ function Login() {
   }
 
   return (
-    <div>
-      <h1>Welcome back</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adip sicing elit, sed do
-        eiusmod.
-      </p>
-      <form onSubmit={submitLogin}>
-        <div>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email"
-          />
+    <div className={style.login}>
+      <div className={style.loginLogo}>
+        <img
+          src={Logo}
+          alt="Logo"
+        />
+      </div>
+      <div className={style.loginWelcome}>
+        <h1>Welcome back</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adip sicing elit, sed do
+          eiusmod.
+        </p>
+      </div>
+      <form
+        className={style.loginForm}
+        onSubmit={submitLogin}>
+        <div className={style.loginFormEma}>
+          <InputField label={"E-Mail"} />
         </div>
-        <div>
-          <input
-            type="text"
-            id="password"
-            name="password"
-            placeholder="Password"
-          />
+        <div className={style.loginFormPas}>
+          <InputField label={"Password"} />
         </div>
-        <button type="submit">Login</button>
+        <div className={style.loginForgot}>
+          <p>Forgot password?</p>
+        </div>
+        <button
+          className={style.loginButton}
+          type="submit">
+          Login
+        </button>
       </form>
       <p>
         Don't have any account? <Link to="/register">Sign up</Link>
