@@ -23,7 +23,7 @@ function AddExpenses() {
 
     form.append("date", selectedDate.toString())
 
-    form.append("transaction", "expenses")
+    form.append("transaction", "expense")
 
     const response = await fetch(
       import.meta.env.VITE_SERVER + "api/transactions/add",
