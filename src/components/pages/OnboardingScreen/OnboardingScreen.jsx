@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
 import Logo from "../../../assets/images/Logo.png"
 import style from "./OnboardingScreen.module.scss"
-import { Opacity } from "@mui/icons-material"
-import Home from "../Home/Home.jsx"
+import { useNavigate } from "react-router-dom"
 
 function OnboardingScreen() {
   const [imageVisible, setImageVisible] = useState(true)
   const [showHome, setShowHome] = useState(false)
+  const navigator = useNavigate()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,7 +27,7 @@ function OnboardingScreen() {
           style={{ opacity: imageVisible ? 1 : 0 }}
         />
       )}
-      {showHome && <Home />} //#in useNavigate() umändern
+      {showHome && navigator("/home")}
     </div>
   )
 }
