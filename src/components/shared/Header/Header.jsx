@@ -8,21 +8,25 @@ import { useLocation } from "react-router-dom"
 function Header() {
   const path = useLocation()
 
+  console.log(path)
+
   return (
     <>
-      <header className={style.header}>
-        <div>
-          <p className={style.welcome}>Welcome back</p>
-          <h1 className={style.name}>Jonathan Doe</h1>
-        </div>
-        <div>
-          <Avatar
-            alt="Profile Avatar"
-            src={mando}
-            sx={{ width: "40px", height: "40px" }}
-          />
-        </div>
-      </header>
+      {path.pathname === "/home" && (
+        <header className={style.header}>
+          <div>
+            <p className={style.welcome}>Welcome back</p>
+            <h1 className={style.name}>Jonathan Doe</h1>
+          </div>
+          <div>
+            <Avatar
+              alt="Profile Avatar"
+              src={mando}
+              sx={{ width: "40px", height: "40px" }}
+            />
+          </div>
+        </header>
+      )}
     </>
   )
 }
