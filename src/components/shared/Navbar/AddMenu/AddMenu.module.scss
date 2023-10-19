@@ -1,0 +1,44 @@
+.add_menu {
+  height: 90%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background-color: rgba(13, 22, 54, 0.7);
+
+  .menu_wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 4.375rem;
+
+    .income_link {
+      text-decoration: none;
+      position: absolute;
+      top: 35px;
+      right: 60px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #424242;
+      letter-spacing: 0.5px;
+    }
+
+    .menu_line {
+      position: absolute;
+      right: 0px;
+      top: 78px;
+      height: 1px;
+      width: 184px;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .expenses_link {
+      text-decoration: none;
+      position: absolute;
+      top: 105px;
+      right: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #424242;
+      letter-spacing: 0.5px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.incomeTrend {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-color: #44bbfe;
+  box-shadow: inset 0px -8px 16px #1e78fe;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+  }
+}
