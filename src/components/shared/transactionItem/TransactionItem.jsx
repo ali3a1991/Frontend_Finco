@@ -18,7 +18,7 @@ function TransactionItem({transaction}) {
           <p>{transaction.category}</p>
           <p>{dateStructure(transaction.date)}</p>
         </div>
-        <p>{transaction.value} $</p>
+        <p>{transaction.value} €</p>
       </div>
     </div>
   )

@@ -4,10 +4,12 @@ import Navbar from "../../shared/Navbar/Navbar.jsx"
 import Header from "../../shared/Header/Header.jsx"
 import DateItem from "../../shared/dateItem/DateItem"
 import usePostFetch from "../../../customHook/usePostFetch"
+import TransactionFilter from "../../shared/transactionFilter/TransactionFilter"
+import TransactionSearchFilter from "../../shared/transactionSearchFilter/TransactionSearchFilter"
 
 function Transaction() {
   const [transactions, setTransactions] = useState([])
-  const fetchData = usePostFetch(
+  const [fetchData, setFetchData] = usePostFetch(
     "api/transactions/data",
     "652e55e0b0e19f3b6a4b124d"
   )
@@ -70,6 +72,8 @@ function Transaction() {
   return (
     <>
       <Header />
+      <TransactionSearchFilter setFetchData={setFetchData} />
+      <TransactionFilter setFetchData={setFetchData} />
       <main>
         {transactions.map((transaction, key) =>
           transaction.value !== "" ? (

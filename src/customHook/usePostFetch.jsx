@@ -19,7 +19,7 @@ function usePostFetch(rout, cardId) {
       })
   }, [])
 
-  return fetchData
+  return [fetchData, setFetchData]
 }
 
 export default usePostFetch
