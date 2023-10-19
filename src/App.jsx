@@ -10,6 +10,7 @@ import TransactionSearch from "./components/pages/TransactionSearch/TransactionS
 import AddIncome from "./components/pages/AddIncome/AddIncome.jsx"
 import AddExpenses from "./components/pages/AddExpenses/AddExpenses.jsx"
 import Report from "./components/pages/Report/Report.jsx"
+import Account from "./components/pages/Account/Account.jsx"
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
         <Route
           path="/account"
           element={<AccountSetup />}
+        />
+        <Route
+          path="/account-settings"
+          element={<Account />}
         />
         <Route
           path="/login"
