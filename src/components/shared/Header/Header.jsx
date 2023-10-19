@@ -2,7 +2,7 @@ import React from "react"
 import style from "./Header.module.scss"
 import Avatar from "@mui/material/Avatar"
 import mando from "../../../assets/images/mando.jpg"
-import Logo from "../../../assets/images/Top.svg"
+// import Logo from "../../../assets/images/Top.svg"
 import { useLocation } from "react-router-dom"
 
 function Header() {

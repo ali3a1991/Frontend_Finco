@@ -2,8 +2,7 @@ import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import style from "./Login.module.scss"
 import Logo from "../../../assets/images/Logo.png"
-import TextField from "@mui/material/TextField"
-import InputField from "../../shared/Input/EMail/InputField.jsx"
+import InputField from "../../shared/Input/InputField/InputField.jsx"
 
 function Login() {
   const navigator = useNavigate()
