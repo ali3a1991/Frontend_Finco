@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import styles from "./AccountSetup.module.scss"
+import style from "./AccountSetup.module.scss"
 import { useNavigate } from "react-router-dom"
 
 function AccountSetup() {
@@ -53,10 +53,10 @@ function AccountSetup() {
     <div>
       <h1>Setup your account</h1>
       <form onSubmit={submitProfile}>
-        <div className={styles.container}>
+        <div className={style.container}>
           {selectedFile && (
             <img
-              className={styles.image}
+              className={style.image}
               src={selectedFile}
               alt="Profile Picture"
             />
