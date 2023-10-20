@@ -4,11 +4,11 @@ import Navbar from "../../shared/Navbar/Navbar.jsx"
 import Header from "../../shared/Header/Header.jsx"
 import DateItem from "../../shared/dateItem/DateItem"
 import usePostFetch from "../../../customHook/usePostFetch"
-import TransactionFilter from "../../shared/transactionFilter/TransactionFilter"
-import TransactionSearchFilter from "../../shared/transactionSearchFilter/TransactionSearchFilter"
+import Filter from "../../shared/filter/Filter"
 
 function Transaction() {
   const [transactions, setTransactions] = useState([])
+  const [result, setResult] = useState(true)
   const [fetchData, setFetchData] = usePostFetch(
     "api/transactions/data",
     "652e55e0b0e19f3b6a4b124d"
@@ -34,18 +34,13 @@ function Transaction() {
         const yearPrevItem = transDatePrevItem.getFullYear()
         const monthPrevItem = transDatePrevItem.getMonth()
         const dayPrevItem = transDatePrevItem.getDate()
-
         const transDateItem = new Date(fetchData[i].date)
         const yearItem = transDateItem.getFullYear()
         const monthItem = transDateItem.getMonth()
         const dayItem = transDateItem.getDate()
         const weekDay = transDateItem.getUTCDay()
 
-        if (
-          dayPrevItem === dayItem &&
-          monthPrevItem === monthItem &&
-          yearPrevItem === yearItem
-        ) {
+        if ( dayPrevItem === dayItem && monthPrevItem === monthItem && yearPrevItem === yearItem) {
           transactionsArray.push(fetchData[i])
         } else {
           transactionsArray.push({
@@ -61,6 +56,9 @@ function Transaction() {
       }
 
       setTransactions(transactionsArray)
+      setResult(true)
+    } else {
+      setResult(false)
     }
   }, [fetchData])
 
@@ -72,23 +70,29 @@ function Transaction() {
   return (
     <>
       <Header />
-      <TransactionSearchFilter setFetchData={setFetchData} />
-      <TransactionFilter setFetchData={setFetchData} />
-      <main>
-        {transactions.map((transaction, key) =>
-          transaction.value !== "" ? (
-            <TransactionItem
-              key={transaction._id}
-              transaction={transaction}
-            />
-          ) : (
-            <DateItem
-              key={key}
-              transaction={transaction}
-            />
-          )
-        )}
-      </main>
+      <div>
+        <p>All Transactions</p>
+        <Filter setFetchData={setFetchData} />
+      </div>
+      {result ? (
+        <main>
+          {transactions.map((transaction, key) =>
+            transaction.value !== "" ? (
+              <TransactionItem
+                key={transaction._id}
+                transaction={transaction}
+              />
+            ) : (
+              <DateItem
+                key={key}
+                transaction={transaction}
+              />
+            )
+          )}
+        </main>
+      ) : (
+        <p>No Transaction</p>
+      )}
       <Navbar />
     </>
   )

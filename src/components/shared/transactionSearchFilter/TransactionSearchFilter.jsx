@@ -1,34 +1,26 @@
-import React from "react"
-import usePostFetch from "../../../customHook/usePostFetch"
+import React, { useRef } from "react"
 
-function TransactionSearchFilter({ setFetchData }) {
-  const [fetchData2, setFetchData2] = usePostFetch(
-    "api/transactions/data",
-    "652e55e0b0e19f3b6a4b124d"
-  )
+function TransactionSearchFilter({ setDateRevValue, setSearchValue }) {
+  const dateRef = useRef()
 
-  const test = (event) => {
-    const dateValue = new Date(event.target.value)
-    const yearValue = dateValue.getFullYear()
-    const monthValue = dateValue.getMonth()
-    const dayValue = dateValue.getDate()
-
-    const dataFilterDate = fetchData2.filter((item) => {
-      const date = new Date(item.date)
-      const year = date.getFullYear()
-      const month = date.getMonth()
-      const day = date.getDate()
-      if (day === dayValue && month === monthValue && year === yearValue) {
-        return item
-      }
-    })
-    setFetchData(dataFilterDate)
+  const setDateFilter = () => {
+    setDateRevValue(dateRef.current.value)
   }
+
+  const searchText = (event) => {
+    setSearchValue(event.target.value)
+  }
+
   return (
     <div>
       <input
+        type="text"
+        onChange={searchText}
+      />
+      <input
+        ref={dateRef}
         type="date"
-        onChange={test}
+        onChange={setDateFilter}
       />
     </div>
   )
