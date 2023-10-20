@@ -1,21 +1,13 @@
-.splash {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 1s ease-in-out;
-}
-
-.splashOnboarding {
+.OnboardingTutorial {
   margin: 0 48px;
   text-align: center;
 }
 
-.splashOnboardingCard {
+.OnboardingTutorialCard {
   margin: 8rem 0 4rem 0;
 }
 
-.splashOnboardingText {
+.OnboardingTutorialText {
   margin-bottom: 6rem;
 
   h1 {
@@ -28,7 +20,7 @@
   }
 }
 
-.splashOnboardingButtons {
+.OnboardingTutorialButtons {
   div {
     margin-bottom: 1rem;
   }

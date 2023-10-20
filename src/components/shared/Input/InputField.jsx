@@ -1,23 +1,21 @@
 import React from "react"
-import style from "./InputField.module.scss"
 import { FormControl, OutlinedInput, InputLabel } from "@mui/material"
 
-function EMail(props) {
+function InputField(props) {
   return (
-    <div className={style.EMail}>
-      <FormControl sx={{ m: 1, width: "300px" }}>
+    <div>
+      <FormControl sx={{ m: 1, width: "80%" }}>
         <InputLabel htmlFor="outlined-adornment-amount">
           {props.label}
         </InputLabel>
         <OutlinedInput
-          sx={{ borderRadius: "25px" }}
-          id="value"
-          name="value"
-          label="E-Mail"
+          sx={{ borderRadius: "50px" }}
+          id={props.data}
+          name={props.data}
         />
       </FormControl>
     </div>
   )
 }
 
-export default EMail
+export default InputField
