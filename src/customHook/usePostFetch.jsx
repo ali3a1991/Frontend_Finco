@@ -6,6 +6,7 @@ function usePostFetch(rout, cardId) {
   useEffect(() => {
     fetch(import.meta.env.VITE_SERVER + rout, {
       method: "POST",
+      credentials: "include",
       headers: {
         "content-type": "application/json",
       },

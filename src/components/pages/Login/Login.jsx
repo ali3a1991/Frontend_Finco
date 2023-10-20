@@ -7,7 +7,6 @@ import BlueButton from "../../shared/BlueButtons/BlueButton"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
 
-
 function Login() {
   const navigator = useNavigate()
 
@@ -54,10 +53,16 @@ function Login() {
         className={style.loginForm}
         onSubmit={submitLogin}>
         <div className={style.loginFormEma}>
-          <InputField label={"E-Mail"} />
+          <InputField
+            label={"E-Mail"}
+            data={"email"}
+          />
         </div>
         <div className={style.loginFormPas}>
-          <InputField label={"Password"} />
+          <InputField
+            label={"Password"}
+            data={"password"}
+          />
         </div>
         <div className={style.loginForgot}>
           <p>Forgot password?</p>

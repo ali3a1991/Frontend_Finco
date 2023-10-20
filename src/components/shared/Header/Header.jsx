@@ -1,7 +1,6 @@
 import React from "react"
 import style from "./Header.module.scss"
 import Avatar from "@mui/material/Avatar"
-import mando from "../../../assets/images/mando.jpg"
 import logo from "../../../assets/images/Logo.png"
 import arrow from "../../../assets/images/arrow.svg"
 import { useLocation, useNavigate } from "react-router-dom"

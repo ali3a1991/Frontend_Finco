@@ -3,12 +3,17 @@ import ExpenseButton from "../Buttons/Expense/ExpenseButton"
 import IncomeButton from "../Buttons/Income/IncomeButton"
 import usePostFetch from "../../../customHook/usePostFetch"
 
-function TransactionFilter({ incomeActive, setIncomeActive, expenseActive, setExpenseActive }) {
+function TransactionFilter({
+  incomeActive,
+  setIncomeActive,
+  expenseActive,
+  setExpenseActive,
+}) {
   const [totalExpense, setTotalExpense] = useState(0)
   const [totalIncome, setTotalIncome] = useState(0)
   const [fetchData2, setFetchData2] = usePostFetch(
     "api/transactions/data",
-    "652e55e0b0e19f3b6a4b124d"
+    "65326ce471fadf8e8d77211e"
   )
 
   const handleExpenseFilter = () => {
