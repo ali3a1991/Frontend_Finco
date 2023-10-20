@@ -1,8 +1,4 @@
-.login {
-  height: 100vh;
-}
-
-.loginLogo {
+.registerLogo {
   padding: 48px 0 0 24px;
   margin-bottom: 4rem;
 
@@ -11,7 +7,7 @@
   }
 }
 
-.loginWelcome {
+.registerWelcome {
   text-align: center;
   padding: 0 48px 0 48px;
   margin-bottom: 5rem;
@@ -25,22 +21,20 @@
   }
 }
 
-.loginForm {
+.registerForm {
   text-align: center;
 }
 
-.loginFormPas {
-  margin-bottom: 1rem;
+.registerFormTerms {
+  margin: 1rem 0 4rem 48px;
+  text-align: left;
+
+  input {
+    margin: 0 8px 0 0;
+  }
 }
 
-.loginForgot {
-  padding-right: 48px;
-  margin-bottom: 8.75rem;
-  font-size: 0.8rem;
-  text-align: right;
-}
-
-.loginNoAccount {
+.registerNoAccount {
   position: absolute;
   bottom: 40px;
   left: 50%;

@@ -2,9 +2,11 @@ import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import style from "./Login.module.scss"
 import Logo from "../../../assets/images/Logo.png"
-import InputField from "../../shared/Input/InputField/InputField.jsx"
+import InputField from "../../shared/Input/InputField.jsx"
+import BlueButton from "../../shared/BlueButtons/BlueButton"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
+
 
 function Login() {
   const navigator = useNavigate()
@@ -45,8 +47,7 @@ function Login() {
       <div className={style.loginWelcome}>
         <h1>Welcome back</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adip sicing elit, sed do
-          eiusmod.
+          Welcome back to Finco – Your partner for financial control and freedom
         </p>
       </div>
       <form
@@ -61,13 +62,11 @@ function Login() {
         <div className={style.loginForgot}>
           <p>Forgot password?</p>
         </div>
-        <button
-          className={style.loginButton}
-          type="submit">
-          Login
-        </button>
+        <div className={style.loginBlueButton}>
+          <BlueButton label={"Login"} />
+        </div>
       </form>
-      <p>
+      <p className={style.loginNoAccount}>
         Don't have any account? <Link to="/register">Sign up</Link>
       </p>
     </div>

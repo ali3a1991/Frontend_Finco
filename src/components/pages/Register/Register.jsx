@@ -2,8 +2,14 @@ import React from "react"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import TermsAndService from "./TermsAndService.jsx"
+
+import style from "./register.module.scss"
+import Logo from "../../../assets/images/Logo.png"
+import InputField from "../../shared/Input/InputField.jsx"
+import BlueButton from "../../shared/BlueButtons/BlueButton.jsx"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
+
 
 function Register() {
   const [showTerms, setShowTerms] = useState(false)
@@ -45,54 +51,57 @@ function Register() {
   }
 
   return (
-    <div>
-      <h1>Create an account</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adip sicing elit, sed do
-        eiusmod.
-      </p>
-      <form onSubmit={submitRegistration}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Name"
-          required
+    <div className={style.register}>
+      <div className={style.registerLogo}>
+        <img
+          src={Logo}
+          alt="Logo"
         />
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
+      </div>
+      <div className={style.registerWelcome}>
+        <h1>Create an account</h1>
+        <p>Join Finco – Your gateway to financial empowerment and control </p>
+      </div>
+      <form
+        className={style.registerForm}
+        onSubmit={submitRegistration}>
+        <InputField
           required
+          label={"Name *"}
+          data={"username"}
         />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
+        <InputField
           required
+          label={"E-Mail *"}
+          data={"email"}
         />
-        <input
-          type="checkbox"
-          id="terms"
-          name="terms"
+        <InputField
           required
+          label={"Password *"}
+          data={"password"}
         />
-        <label htmlFor="terms"></label>
-        Agree to our <span onClick={openTerms}>Terms and Service</span>
-        {showTerms && (
-          <TermsAndService
-            open={showTerms}
-            close={closeTerms}
+        <div className={style.registerFormTerms}>
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
           />
-        )}
-        <button type="submit">Register Now</button>
+          <label htmlFor="terms"></label>
+          Agree to our <span onClick={openTerms}>Terms and Service</span>
+          {showTerms && (
+            <TermsAndService
+              open={showTerms}
+              close={closeTerms}
+            />
+          )}
+        </div>
+        <BlueButton
+          type="submit"
+          label={"Register Now"}
+        />
       </form>
-      <p>
+      <p className={style.registerNoAccount}>
         Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
