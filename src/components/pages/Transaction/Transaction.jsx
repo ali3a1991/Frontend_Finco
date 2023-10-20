@@ -11,7 +11,7 @@ function Transaction() {
   const [result, setResult] = useState(true)
   const [fetchData, setFetchData] = usePostFetch(
     "api/transactions/data",
-    "652e55e0b0e19f3b6a4b124d"
+    "65326ce471fadf8e8d77211e"
   )
 
   useEffect(() => {
@@ -40,7 +40,11 @@ function Transaction() {
         const dayItem = transDateItem.getDate()
         const weekDay = transDateItem.getUTCDay()
 
-        if ( dayPrevItem === dayItem && monthPrevItem === monthItem && yearPrevItem === yearItem) {
+        if (
+          dayPrevItem === dayItem &&
+          monthPrevItem === monthItem &&
+          yearPrevItem === yearItem
+        ) {
           transactionsArray.push(fetchData[i])
         } else {
           transactionsArray.push({
