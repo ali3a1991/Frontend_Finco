@@ -2,7 +2,7 @@ import React from "react"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import TermsAndService from "./TermsAndService.jsx"
-import style from "../Register/Register.module.scss"
+import style from "../../../components/pages/Register/Register.module.scss"
 import Logo from "../../../assets/images/Logo.png"
 import InputField from "../../shared/Input/InputField.jsx"
 import BlueButton from "../../shared/BlueButtons/BlueButton.jsx"
@@ -13,8 +13,6 @@ function Register() {
   const [showTerms, setShowTerms] = useState(false)
 
   const { userData, setUserData } = useContext(UserContext)
-
-  console.log(userData)
 
   const navigator = useNavigate()
 
