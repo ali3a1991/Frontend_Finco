@@ -1,9 +1,18 @@
 import React, { useState } from "react"
-import styles from "./AccountSetup.module.scss"
+import style from "./AccountSetup.module.scss"
 import { useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { UserContext } from "../../../contexts/userContext.jsx"
 
 function AccountSetup() {
   const [selectedFile, setSelectedFile] = useState(null)
+
+  const { userData, setUserData } = useContext(UserContext)
+
+  const userID = userData._id
+
+  console.log(userData)
+  console.log(userID)
 
   const navigator = useNavigate()
 
@@ -12,7 +21,7 @@ function AccountSetup() {
 
     const form = new FormData(event.target)
 
-    form.append("_id", "652fc8cc7f06e305f02bd605")
+    form.append("_id", userID)
 
     const response = await fetch(
       import.meta.env.VITE_SERVER + "api/auth/profile",
@@ -24,7 +33,8 @@ function AccountSetup() {
     )
     if (response.ok) {
       console.log("Registration successful!")
-      console.log(response)
+      const data = await response.json()
+      setUserData(data)
       navigator("/home")
     } else {
       console.log("Registration failed.")
@@ -53,10 +63,10 @@ function AccountSetup() {
     <div>
       <h1>Setup your account</h1>
       <form onSubmit={submitProfile}>
-        <div className={styles.container}>
+        <div className={style.container}>
           {selectedFile && (
             <img
-              className={styles.image}
+              className={style.image}
               src={selectedFile}
               alt="Profile Picture"
             />

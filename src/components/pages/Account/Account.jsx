@@ -1,17 +1,18 @@
 import React from "react"
+import style from "../Account/Account.module.scss"
 import Header from "../../shared/Header/Header.jsx"
 import Navbar from "../../shared/Navbar/Navbar.jsx"
 
-function TransactionSearch() {
+function Account() {
   return (
     <>
       <Header />
       <div>
-        <h1>Transaction Search</h1>
+        <h1>Account</h1>
       </div>
       <Navbar />
     </>
   )
 }
 
-export default TransactionSearch
+export default Account

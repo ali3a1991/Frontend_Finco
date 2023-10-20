@@ -14,6 +14,7 @@ function OnboardingScreen() {
   //   const timer = setTimeout(() => {
   //     setImageVisible(false)
 
+
   //     setTimeout(() => {
   //       setShowHome(true)
   //     }, 1)

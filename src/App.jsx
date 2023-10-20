@@ -6,10 +6,10 @@ import AccountSetup from "./components/pages/AccountSetup/AccountSetup.jsx"
 import Login from "./components/pages/Login/Login.jsx"
 import Home from "./components/pages/Home/Home.jsx"
 import Transaction from "./components/pages/Transaction/Transaction.jsx"
-import TransactionSearch from "./components/pages/TransactionSearch/TransactionSearch.jsx"
 import AddIncome from "./components/pages/AddIncome/AddIncome.jsx"
 import AddExpenses from "./components/pages/AddExpenses/AddExpenses.jsx"
 import Report from "./components/pages/Report/Report.jsx"
+import Account from "./components/pages/Account/Account.jsx"
 
 function App() {
   return (
@@ -32,6 +32,10 @@ function App() {
           element={<AccountSetup />}
         />
         <Route
+          path="/account-settings"
+          element={<Account />}
+        />
+        <Route
           path="/login"
           element={<Login />}
         />
@@ -42,10 +46,6 @@ function App() {
         <Route
           path="/transactions"
           element={<Transaction />}
-        />
-        <Route
-          path="/transactions-search"
-          element={<TransactionSearch />}
         />
         <Route
           path="/add-income"
