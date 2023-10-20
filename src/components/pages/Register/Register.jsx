@@ -9,13 +9,10 @@ import BlueButton from "../../shared/BlueButtons/BlueButton.jsx"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
 
-
 function Register() {
   const [showTerms, setShowTerms] = useState(false)
 
   const { userData, setUserData } = useContext(UserContext)
-
-  console.log(userData)
 
   const navigator = useNavigate()
 
