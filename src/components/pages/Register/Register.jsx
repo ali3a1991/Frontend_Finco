@@ -2,14 +2,12 @@ import React from "react"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import TermsAndService from "./TermsAndService.jsx"
-
-import style from "./register.module.scss"
+import style from "../Register/Register.module.scss"
 import Logo from "../../../assets/images/Logo.png"
 import InputField from "../../shared/Input/InputField.jsx"
 import BlueButton from "../../shared/BlueButtons/BlueButton.jsx"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
-
 
 function Register() {
   const [showTerms, setShowTerms] = useState(false)
