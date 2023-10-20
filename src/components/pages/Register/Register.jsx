@@ -2,9 +2,15 @@ import React from "react"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import TermsAndService from "./TermsAndService.jsx"
+import { useContext } from "react"
+import { UserContext } from "../../../contexts/userContext.jsx"
 
 function Register() {
   const [showTerms, setShowTerms] = useState(false)
+
+  const { userData, setUserData } = useContext(UserContext)
+
+  console.log(userData)
 
   const navigator = useNavigate()
 
@@ -21,11 +27,12 @@ function Register() {
       }
     )
     if (response.ok) {
-      console.log("Registration successful!")
-      console.log(response)
+      const data = await response.json()
+      setUserData(data)
+      console.log("Registrierung erfolgreich!")
       navigator("/account")
     } else {
-      console.log("Registration failed.")
+      console.log("Registrierung fehlgeschlagen.")
     }
   }
 

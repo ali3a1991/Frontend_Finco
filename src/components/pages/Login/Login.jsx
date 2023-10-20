@@ -3,9 +3,13 @@ import { Link, useNavigate } from "react-router-dom"
 import style from "./Login.module.scss"
 import Logo from "../../../assets/images/Logo.png"
 import InputField from "../../shared/Input/InputField/InputField.jsx"
+import { useContext } from "react"
+import { UserContext } from "../../../contexts/userContext.jsx"
 
 function Login() {
   const navigator = useNavigate()
+
+  const { setUserData } = useContext(UserContext)
 
   async function submitLogin(event) {
     event.preventDefault()
@@ -22,7 +26,8 @@ function Login() {
     )
     if (response.ok) {
       console.log("Login successful!")
-      console.log(response)
+      const data = await response.json()
+      setUserData(data)
       navigator("/home")
     } else {
       console.log("Login failed.")

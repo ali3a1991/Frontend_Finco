@@ -7,6 +7,8 @@ import ExpenseBigButton from "../../shared/BigButtons/ExpenseBigButton/ExpenseBi
 import Navi from "../../shared/Navbar/Navbar.jsx"
 import HomeLimit from "../../shared/HomeLimit/HomeLimit.jsx"
 import usePostFetch from "../../../customHook/usePostFetch"
+import { useContext } from "react"
+import { UserContext } from "../../../contexts/userContext.jsx"
 
 function Home() {
   const [totalExpense, setTotalExpense] = useState(0)
@@ -15,6 +17,8 @@ function Home() {
     "api/transactions/data",
     "652e55e0b0e19f3b6a4b124d"
   )
+
+  const { userData, setUserData } = useContext(UserContext)
 
   useEffect(() => {
     let totalExpense = 0
