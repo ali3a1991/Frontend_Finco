@@ -16,7 +16,7 @@ function OnboardingScreen() {
         setShowHome(true)
       }, 1)
     }, 3000)
-  })
+  }, [])
 
   return (
     <div className={style.splash}>

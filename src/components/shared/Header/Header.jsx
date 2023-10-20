@@ -5,10 +5,14 @@ import mando from "../../../assets/images/mando.jpg"
 import logo from "../../../assets/images/Logo.png"
 import arrow from "../../../assets/images/arrow.svg"
 import { useLocation, useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { UserContext } from "../../../contexts/userContext.jsx"
 
 function Header() {
   const location = useLocation()
   const navigator = useNavigate()
+
+  const { userData } = useContext(UserContext)
 
   return (
     <>
@@ -17,7 +21,7 @@ function Header() {
         location.pathname === "/account-settings" ? (
           <div>
             <p className={style.welcome}>Welcome back</p>
-            <h1 className={style.name}>Jonathan Doe</h1>
+            <h1 className={style.name}>{userData.username}</h1>
           </div>
         ) : location.pathname === "/add-income" ||
           location.pathname === "/add-expenses" ||
@@ -42,7 +46,7 @@ function Header() {
         <div onClick={() => navigator("/account-settings")}>
           <Avatar
             alt="Profile Avatar"
-            src={mando}
+            src={userData.profile_image_url}
             sx={{ width: "40px", height: "40px" }}
           />
         </div>
