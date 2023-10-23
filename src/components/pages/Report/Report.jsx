@@ -4,6 +4,8 @@ import Header from "../../shared/Header/Header.jsx"
 import Navbar from "../../shared/Navbar/Navbar.jsx"
 import { LineChart } from "@mui/x-charts/LineChart"
 import { useState, useEffect } from "react"
+import TransactionFilter from "../../shared/transactionFilter/TransactionFilter.jsx"
+import TransactionItem from "../../shared/transactionItem/TransactionItem.jsx"
 
 function Report() {
   const [fetchData3, setFetchData3] = useState([])
@@ -32,52 +34,52 @@ function Report() {
   return isLoading ? (
     <div>Loading...</div>
   ) : (
-  return (
-
     <>
       <Header />
       <div>
         <h1>Report</h1>
-        <TransactionFilter/>
+        <TransactionFilter />
+        <div className={style.graph_container}>
+          <LineChart
+            width={500}
+            height={300}
+            series={[
+              {
+                data: fetchData3.map((item) => item.value),
+                label: "Transaction Value",
+                area: true,
+                showMark: false,
+                color: "#FB2467",
+              },
+            ]}
+            xAxis={[
+              {
+                scaleType: "point",
+                data: fetchData3.map((item) =>
+                  new Date(item.date).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  })
+                ),
+              },
+            ]}
+            sx={{
+              ".MuiLineElement-root": {
+                display: "none",
+              },
+            }}
+          />
+        </div>
       </div>
       <div>
         <h3>Total Transactions</h3>
-        {fetchData.map(transaction => <TransactionItem
-          key={transaction._id}
-          transaction={transaction}
-        />)}
-      </div>
-      <div className={style.graph_container}>
-        <LineChart
-          width={500}
-          height={300}
-          series={[
-            {
-              data: fetchData3.map((item) => item.value),
-              label: "Transaction Value",
-              area: true,
-              showMark: false,
-              color: "#FB2467",
-            },
-          ]}
-          xAxis={[
-            {
-              scaleType: "point",
-              data: fetchData3.map((item) =>
-                new Date(item.date).toLocaleDateString("en-GB", {
-                  day: "2-digit",
-                  month: "short",
-                  year: "numeric",
-                })
-              ),
-            },
-          ]}
-          sx={{
-            ".MuiLineElement-root": {
-              display: "none",
-            },
-          }}
-        />
+        {fetchData3.map((transaction) => (
+          <TransactionItem
+            key={transaction._id}
+            transaction={transaction}
+          />
+        ))}
       </div>
       <Navbar />
     </>
