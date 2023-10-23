@@ -32,10 +32,20 @@ function Report() {
   return isLoading ? (
     <div>Loading...</div>
   ) : (
+  return (
+
     <>
       <Header />
       <div>
         <h1>Report</h1>
+        <TransactionFilter/>
+      </div>
+      <div>
+        <h3>Total Transactions</h3>
+        {fetchData.map(transaction => <TransactionItem
+          key={transaction._id}
+          transaction={transaction}
+        />)}
       </div>
       <div className={style.graph_container}>
         <LineChart
