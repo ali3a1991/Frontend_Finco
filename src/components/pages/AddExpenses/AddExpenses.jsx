@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import dayjs from "dayjs"
 import { InputLabel } from "@mui/material"
 import { OutlinedInput } from "@mui/material"
@@ -10,11 +10,14 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo"
 import Header from "../../shared/Header/Header.jsx"
 import { useState } from "react"
+import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
+import { UserContext } from "../../../contexts/userContext.jsx"
 
 function AddExpenses() {
   const [selectedDate, setSelectedDate] = useState(dayjs())
-
-  const cardNumber = "65326ce471fadf8e8d77211e"
+  const { setTransactionsData } = useContext(TransactionsContext)
+  const { userData } = useContext(UserContext)
+  const cards = userData.userAllCards
 
   async function submitExpense(event) {
     event.preventDefault()
@@ -34,6 +37,8 @@ function AddExpenses() {
       }
     )
     if (response.ok) {
+      const data = await response.json()
+      setTransactionsData(data)
       console.log("Submit successful!")
       event.target.reset()
     } else {
@@ -52,7 +57,13 @@ function AddExpenses() {
             <select
               name="card_id"
               id="card_id">
-              <option value={cardNumber}>99999999999999</option>
+              {cards.map((card) => (
+                <option
+                  key={card._id}
+                  value={card._id}>
+                  {card.card_number}
+                </option>
+              ))}
             </select>
             <div>
               <FormControl sx={{ m: 1 }}>

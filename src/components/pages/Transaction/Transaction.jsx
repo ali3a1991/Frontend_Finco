@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import TransactionItem from "../../shared/transactionItem/TransactionItem"
 import Navbar from "../../shared/Navbar/Navbar.jsx"
 import Header from "../../shared/Header/Header.jsx"
 import DateItem from "../../shared/dateItem/DateItem"
-import usePostFetch from "../../../customHook/usePostFetch"
 import Filter from "../../shared/filter/Filter"
+import { TransactionsContext } from "../../../contexts/transactionsContext"
 
 function Transaction() {
+  const { transactionsData } = useContext(TransactionsContext)
   const [transactions, setTransactions] = useState([])
   const [result, setResult] = useState(true)
-  const [fetchData, setFetchData] = usePostFetch(
-    "api/transactions/data",
-    "65326ce471fadf8e8d77211e"
-  )
+  const [fetchData, setFetchData] = useState([])
 
   useEffect(() => {
+    setFetchData(transactionsData)
+  }, [])
+
+  useEffect(() => {
+    console.log(fetchData)
     if (fetchData.length > 0) {
       const transactionsArray = []
       const firstDate = new Date(fetchData[0].date)

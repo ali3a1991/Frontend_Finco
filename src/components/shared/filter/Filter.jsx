@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from "react"
-import usePostFetch from "../../../customHook/usePostFetch"
+import React, { useContext, useEffect, useState } from "react"
 import TransactionFilter from "../transactionFilter/TransactionFilter"
 import TransactionSearchFilter from "../transactionSearchFilter/TransactionSearchFilter"
+import { TransactionsContext } from "../../../contexts/transactionsContext"
 
 function Filter({ setFetchData }) {
   const [dateRefValue, setDateRevValue] = useState(null)
   const [searchValue, setSearchValue] = useState("")
   const [incomeActive, setIncomeActive] = useState(false)
   const [expenseActive, setExpenseActive] = useState(false)
-  const [fetchData2, setFetchData2] = usePostFetch(
-    "api/transactions/data",
-    "65326ce471fadf8e8d77211e"
-  )
+  const { transactionsData } = useContext(TransactionsContext)
 
   useEffect(() => {
-    let filterData = fetchData2.map((item) => item)
+    let filterData = transactionsData.map((item) => item)
     if (dateRefValue) {
       const dateValue = new Date(dateRefValue)
       const yearValue = dateValue.getFullYear()
       const monthValue = dateValue.getMonth()
       const dayValue = dateValue.getDate()
 
-      filterData = fetchData2.filter((item) => {
+      filterData = transactionsData.filter((item) => {
         const date = new Date(item.date)
         const year = date.getFullYear()
         const month = date.getMonth()
