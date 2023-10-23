@@ -10,6 +10,7 @@ import AddIncome from "./components/pages/AddIncome/AddIncome.jsx"
 import AddExpenses from "./components/pages/AddExpenses/AddExpenses.jsx"
 import Report from "./components/pages/Report/Report.jsx"
 import Account from "./components/pages/Account/Account.jsx"
+import Protected from "./components/shared/Protected/Protected.jsx"
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
           element={<OnboardingScreen />}
         />
         <Route
+          path="/login"
+          element={<Login />}
+        />
+        <Route
           path="/onboarding"
           element={<OnboardingTutorial />}
         />
@@ -27,38 +32,36 @@ function App() {
           path="/register"
           element={<Register />}
         />
-        <Route
-          path="/account"
-          element={<AccountSetup />}
-        />
-        <Route
-          path="/account-settings"
-          element={<Account />}
-        />
-        <Route
-          path="/login"
-          element={<Login />}
-        />
-        <Route
-          path="/home"
-          element={<Home />}
-        />
-        <Route
-          path="/transactions"
-          element={<Transaction />}
-        />
-        <Route
-          path="/add-income"
-          element={<AddIncome />}
-        />
-        <Route
-          path="/add-expenses"
-          element={<AddExpenses />}
-        />
-        <Route
-          path="/report"
-          element={<Report />}
-        />
+        <Route element={<Protected/>}>
+          <Route
+            path="/account"
+            element={<AccountSetup />}
+          />
+          <Route
+            path="/account-settings"
+            element={<Account />}
+          />
+          <Route
+            path="/home"
+            element={<Home />}
+          />
+          <Route
+            path="/transactions"
+            element={<Transaction />}
+          />
+          <Route
+            path="/add-income"
+            element={<AddIncome />}
+          />
+          <Route
+            path="/add-expenses"
+            element={<AddExpenses />}
+          />
+          <Route
+            path="/report"
+            element={<Report />}
+          />
+        </Route>
       </Routes>
     </>
   )
