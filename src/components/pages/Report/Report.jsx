@@ -10,6 +10,7 @@ import TransactionItem from "../../shared/transactionItem/TransactionItem.jsx"
 function Report() {
   const [fetchData3, setFetchData3] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [visibleItems, setVisibleItems] = useState(10)
 
   useEffect(() => {
     fetch(import.meta.env.VITE_SERVER + "api/transactions/data", {
@@ -29,6 +30,10 @@ function Report() {
       })
   }, [])
 
+  const handleLoadMore = () => {
+    setVisibleItems((prevVisibleItems) => prevVisibleItems + 10)
+  }
+
   console.log(fetchData3)
 
   return isLoading ? (
@@ -37,7 +42,7 @@ function Report() {
     <>
       <Header />
       <div>
-        <h1>Report</h1>
+        <h1 className={style.report_heading}>Report</h1>
         <TransactionFilter />
         <div className={style.graph_container}>
           <LineChart
@@ -49,7 +54,7 @@ function Report() {
                 label: "Transaction Value",
                 area: true,
                 showMark: false,
-                color: "#FB2467",
+                color: "#77C7C1",
               },
             ]}
             xAxis={[
@@ -73,13 +78,20 @@ function Report() {
         </div>
       </div>
       <div>
-        <h3>Total Transactions</h3>
-        {fetchData3.map((transaction) => (
-          <TransactionItem
-            key={transaction._id}
-            transaction={transaction}
-          />
-        ))}
+        <h3 className={style.total_heading}>Total Transactions</h3>
+        <div className={style.transactions_list}>
+          {fetchData3.slice(0, visibleItems).map((transaction) => (
+            <TransactionItem
+              key={transaction._id}
+              transaction={transaction}
+            />
+          ))}
+        </div>
+      </div>
+      <div
+        className={style.loadmore}
+        onClick={handleLoadMore}>
+        load more
       </div>
       <Navbar />
     </>

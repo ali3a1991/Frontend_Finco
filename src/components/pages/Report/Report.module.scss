@@ -1,9 +1,36 @@
+.report_heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #240f51;
+}
+
 .graph_container {
   display: flex;
   justify-content: center;
   border: 1px solid #0d163624;
   border-radius: 15px;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-top: 1.25rem;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.loadmore {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 130px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0d1636;
+}
+
+.total_heading {
+  margin-left: 1.5rem;
+}
+
+.transactions_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

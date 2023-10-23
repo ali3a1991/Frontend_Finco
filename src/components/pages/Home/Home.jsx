@@ -20,6 +20,8 @@ function Home() {
 
   const { userData, setUserData } = useContext(UserContext)
 
+  console.log(userData)
+
   useEffect(() => {
     let totalExpense = 0
     let totalIncome = 0
