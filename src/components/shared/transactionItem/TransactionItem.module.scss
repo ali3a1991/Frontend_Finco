@@ -1,0 +1,63 @@
+.item_container {
+  width: 327px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+
+  .container_left {
+    display: flex;
+    gap: 12px;
+
+    .category {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 140%;
+      color: #0d1636;
+    }
+
+    .date {
+      font-size: 12px;
+      font-weight: 400;
+      color: #0d1636;
+      opacity: 0.7;
+      line-height: 140%;
+    }
+  }
+
+  .icon_container {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 30px;
+      height: 25px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .income_value {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 140%;
+    // background: linear-gradient(180deg, #44bbfe 0%, #1e78fe 100%);
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    color: green;
+  }
+
+  .expense_value {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 140%;
+    // background: linear-gradient(180deg, #ffcf53 0%, #f90 100%);
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    color: red;
+  }
+}
