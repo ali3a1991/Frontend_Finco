@@ -24,6 +24,7 @@ const Protected = () => {
     validateToken()
   }, [])
 
+
   useEffect(() => {
     const reload = async () => {
       const response = await fetch(import.meta.env.VITE_SERVER + "api/auth/get", {

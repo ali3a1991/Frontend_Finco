@@ -32,7 +32,7 @@ function App() {
           path="/register"
           element={<Register />}
         />
-        <Route element={<Protected/>}>
+        <Route element={<Protected />}>
           <Route
             path="/account"
             element={<AccountSetup />}
