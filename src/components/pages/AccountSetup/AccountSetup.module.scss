@@ -1,9 +1,33 @@
-.container {
+.accSetupLogo {
+  padding: 48px 0 0 24px;
+  margin-bottom: 4rem;
+
+  img {
+    width: 30px;
+  }
+}
+
+.accSetupWelcome {
+  text-align: left;
+  padding: 0 48px;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+}
+
+.accSetupFormContainer {
+  position: relative;
   width: 327px;
   height: 250px;
   background-color: #f7f7f7;
   border-radius: 18px;
-  margin: 0 auto;
+  margin: 0 auto 4rem auto;
 
   .image {
     width: 100%;
@@ -11,4 +35,19 @@
     object-fit: cover;
     border-radius: 18px;
   }
+}
+
+.accSetupFormContainerButton {
+  position: absolute;
+  bottom: -25px;
+  left: 24px;
+}
+
+.accSetupFormInputField {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.accSetupFormButton {
+  text-align: center;
 }

@@ -3,7 +3,7 @@ import style from "./Header.module.scss"
 import Avatar from "@mui/material/Avatar"
 import logo from "../../../assets/images/Logo.png"
 import arrow from "../../../assets/images/arrow.svg"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, Link } from "react-router-dom"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
 
@@ -35,10 +35,12 @@ function Header() {
           </div>
         ) : (
           <div className={style.logo_wrapper}>
-            <img
-              src={logo}
-              alt="Finco Logo"
-            />
+            <Link to="/home">
+              <img
+                src={logo}
+                alt="Finco Logo"
+              />
+            </Link>
           </div>
         )}
         <div></div>

@@ -22,7 +22,9 @@ function OnboardingTutorial() {
         </div>
         <div className={style.OnboardingTutorialButtons}>
           <div>
-            <BlueButton label={"Next"} />
+            <Link to="/register">
+              <BlueButton label={"Get Started"} />
+            </Link>
           </div>
         </div>
       </div>
