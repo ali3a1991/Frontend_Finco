@@ -3,7 +3,7 @@ import React from 'react'
 function DateItem({transaction}) {
 
   const getDayName = (day) => {
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     return days[day]
   }
 

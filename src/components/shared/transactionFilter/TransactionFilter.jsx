@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import ExpenseButton from "../Buttons/Expense/ExpenseButton"
 import IncomeButton from "../Buttons/Income/IncomeButton"
-import usePostFetch from "../../../customHook/usePostFetch"
+import { TransactionsContext } from "../../../contexts/transactionsContext"
 
 function TransactionFilter({
   incomeActive,
@@ -11,10 +11,7 @@ function TransactionFilter({
 }) {
   const [totalExpense, setTotalExpense] = useState(0)
   const [totalIncome, setTotalIncome] = useState(0)
-  const [fetchData2, setFetchData2] = usePostFetch(
-    "api/transactions/data",
-    "65326ce471fadf8e8d77211e"
-  )
+  const { transactionsData } = useContext(TransactionsContext)
 
   const handleExpenseFilter = () => {
     setExpenseActive((prev) => !prev)
@@ -29,7 +26,7 @@ function TransactionFilter({
   useEffect(() => {
     let totalExpense = 0
     let totalIncome = 0
-    fetchData2.forEach((item) => {
+    transactionsData.forEach((item) => {
       if (item.transaction === "income") {
         totalIncome += item.value
       } else if (item.transaction === "expense") {
@@ -38,7 +35,7 @@ function TransactionFilter({
     })
     setTotalExpense(totalExpense)
     setTotalIncome(totalIncome)
-  }, [fetchData2])
+  }, [transactionsData])
 
   return (
     <div>
