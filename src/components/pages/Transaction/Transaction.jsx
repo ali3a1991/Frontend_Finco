@@ -14,7 +14,7 @@ function Transaction() {
 
   useEffect(() => {
     setFetchData(transactionsData)
-  }, [])
+  }, [transactionsData])
 
   useEffect(() => {
     console.log(fetchData)
