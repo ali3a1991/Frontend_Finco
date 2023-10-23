@@ -88,11 +88,11 @@ function AddIncome() {
                 <select
                   name="category"
                   id="category">
-                  <option value="salary">Salary</option>
-                  <option value="shopping">Shopping</option>
-                  <option value="food&drink">Food & Drink</option>
-                  <option value="insurance">Insurance</option>
-                  <option value="rent">Rent</option>
+                  <option value="Salary">Salary</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Food & Drink">Food & Drink</option>
+                  <option value="Insurance">Insurance</option>
+                  <option value="Rent">Rent</option>
                 </select>
               </label>
             </div>

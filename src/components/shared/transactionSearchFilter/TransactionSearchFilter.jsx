@@ -8,7 +8,9 @@ function TransactionSearchFilter({ setDateRevValue, setSearchValue }) {
   }
 
   const searchText = (event) => {
-    setSearchValue(event.target.value)
+    setSearchValue(
+      event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1)
+    )
   }
 
   return (

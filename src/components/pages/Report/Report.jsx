@@ -6,29 +6,15 @@ import { LineChart } from "@mui/x-charts/LineChart"
 import { useState, useEffect } from "react"
 import TransactionFilter from "../../shared/transactionFilter/TransactionFilter.jsx"
 import TransactionItem from "../../shared/transactionItem/TransactionItem.jsx"
+import { useContext } from "react"
+import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
+import CircularProgress from "@mui/material/CircularProgress"
+import Box from "@mui/material/Box"
 
 function Report() {
-  const [fetchData3, setFetchData3] = useState([])
+  const { transactionsData } = useContext(TransactionsContext)
   const [isLoading, setIsLoading] = useState(true)
   const [visibleItems, setVisibleItems] = useState(10)
-
-  useEffect(() => {
-    fetch(import.meta.env.VITE_SERVER + "api/transactions/data", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ card_id: "65326ce471fadf8e8d77211e" }),
-    })
-      .then((res) => {
-        if (res.ok) return res.json()
-      })
-      .then((data) => {
-        setFetchData3(data)
-        setIsLoading(false)
-      })
-  }, [])
 
   const handleLoadMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 10)
@@ -46,10 +32,22 @@ function Report() {
     0
   )
 
-  console.log(fetchData3)
+  useEffect(() => {
+    if (transactionsData.length > 0) {
+      setIsLoading(false)
+    }
+  }, [transactionsData])
 
   return isLoading ? (
-    <div>Loading...</div>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}>
+      <CircularProgress />
+    </Box>
   ) : (
     <>
       <Header />
@@ -62,7 +60,7 @@ function Report() {
             height={300}
             series={[
               {
-                data: fetchData3
+                data: transactionsData
                   .filter((item) => {
                     const itemDate = new Date(item.date)
                     return itemDate >= startDate && itemDate <= endDate
@@ -77,7 +75,7 @@ function Report() {
             xAxis={[
               {
                 scaleType: "point",
-                data: fetchData3
+                data: transactionsData
                   .filter((item) => {
                     const itemDate = new Date(item.date)
                     return itemDate >= startDate && itemDate <= endDate
@@ -104,12 +102,22 @@ function Report() {
       <div>
         <h3 className={style.total_heading}>Total Transactions</h3>
         <div className={style.transactions_list}>
-          {fetchData3.slice(0, visibleItems).map((transaction) => (
-            <TransactionItem
-              key={transaction._id}
-              transaction={transaction}
-            />
-          ))}
+          {transactionsData
+            .filter((transaction) => {
+              const transactionDate = new Date(transaction.date)
+              const currentDate = new Date()
+              return (
+                transactionDate.getMonth() === currentDate.getMonth() &&
+                transactionDate.getFullYear() === currentDate.getFullYear()
+              )
+            })
+            .slice(0, visibleItems)
+            .map((transaction) => (
+              <TransactionItem
+                key={transaction._id}
+                transaction={transaction}
+              />
+            ))}
         </div>
       </div>
       <div

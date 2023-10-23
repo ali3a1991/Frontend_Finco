@@ -2,7 +2,7 @@ import React from "react"
 import IncomeTrend from "../../Buttons/Income/IncomeTrend/IncomeTrend.jsx"
 import style from "./IncomeBigButton.module.scss"
 
-function IncomeBigButton({totalIncome}) {
+function IncomeBigButton({ totalIncome }) {
   return (
     <div className={style.incomeBigButton}>
       <div className={style.incomeBigButtonTrend}>
@@ -10,7 +10,7 @@ function IncomeBigButton({totalIncome}) {
       </div>
       <div className={style.incomeBigButtonDetails}>
         <p>Income</p>
-        <p>{totalIncome} €</p>
+        <p>{totalIncome.toLocaleString()} €</p>
       </div>
     </div>
   )

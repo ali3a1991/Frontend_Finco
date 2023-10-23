@@ -43,21 +43,21 @@
     font-size: 16px;
     font-weight: 700;
     line-height: 140%;
-    // background: linear-gradient(180deg, #44bbfe 0%, #1e78fe 100%);
-    // background-clip: text;
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
-    color: rgb(32, 128, 32);
+    background: linear-gradient(180deg, #44bbfe 0%, #1e78fe 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    // color: rgb(32, 128, 32);
   }
 
   .expense_value {
     font-size: 16px;
     font-weight: 700;
     line-height: 140%;
-    // background: linear-gradient(180deg, #ffcf53 0%, #f90 100%);
-    // background-clip: text;
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
-    color: rgb(232, 56, 56);
+    background: linear-gradient(180deg, #ffcf53 0%, #f90 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    // color: rgb(232, 56, 56);
   }
 }

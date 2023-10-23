@@ -1,4 +1,6 @@
 import React, { createContext, useState } from "react"
+import { useContext } from "react"
+import { UserContext } from "./userContext.jsx"
 
 export const TransactionsContext = createContext()
 
