@@ -14,7 +14,6 @@ function OnboardingScreen() {
   //   const timer = setTimeout(() => {
   //     setImageVisible(false)
 
-
   //     setTimeout(() => {
   //       setShowHome(true)
   //     }, 1)
@@ -47,10 +46,10 @@ function OnboardingScreen() {
           </p>
         </div>
         <div className={style.splashOnboardingButtons}>
-          <div>
+          <Link to="/onboarding">
             <BlueButton label={"Next"} />
-          </div>
-          <Link to="/home">Skip</Link>
+          </Link>
+          <Link to="/register">Skip</Link>
         </div>
       </div>
     </div>

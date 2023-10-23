@@ -3,6 +3,10 @@ import style from "./AccountSetup.module.scss"
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
+import Logo from "../../../assets/images/Logo.png"
+import InputField from "../../shared/Input/InputField"
+import Picture from "../../shared/Buttons/Picture/Picture.jsx"
+import BlueButton from "../../shared/BlueButtons/BlueButton"
 
 function AccountSetup() {
   const [selectedFile, setSelectedFile] = useState(null)
@@ -11,8 +15,8 @@ function AccountSetup() {
 
   const userID = userData._id
 
-  console.log(userData)
-  console.log(userID)
+  // console.log(userData)
+  // console.log(userID)
 
   const navigator = useNavigate()
 
@@ -32,12 +36,12 @@ function AccountSetup() {
       }
     )
     if (response.ok) {
-      console.log("Registration successful!")
+      // console.log("Registration successful!")
       const data = await response.json()
       setUserData(data)
       navigator("/home")
     } else {
-      console.log("Registration failed.")
+      // console.log("Registration failed.")
     }
   }
 
@@ -60,10 +64,21 @@ function AccountSetup() {
   }
 
   return (
-    <div>
-      <h1>Setup your account</h1>
-      <form onSubmit={submitProfile}>
-        <div className={style.container}>
+    <div className={style.accSetup}>
+      <div className={style.accSetupLogo}>
+        <img
+          src={Logo}
+          alt="Logo"
+        />
+      </div>
+      <div className={style.accSetupWelcome}>
+        <h1>Setup your account</h1>
+        <p>Profile picture</p>
+      </div>
+      <form
+        className={style.accSetupForm}
+        onSubmit={submitProfile}>
+        <div className={style.accSetupFormContainer}>
           {selectedFile && (
             <img
               className={style.image}
@@ -71,15 +86,24 @@ function AccountSetup() {
               alt="Profile Picture"
             />
           )}
+          <label
+            className={style.accSetupFormContainerButton}
+            htmlFor="img">
+            <Picture />
+          </label>
         </div>
         <input
           type="file"
           id="img"
           name="img"
+          style={{ display: "none" }}
           onChange={handleImageChange}
         />
-        <div>
-          <input
+        <div className={style.accSetupFormInputField}>
+          <InputField
+            required
+            label={"Card number *"}
+            data={"card_number"}
             type="tel"
             inputMode="numeric"
             pattern="[0-9\s]{13,19}"
@@ -89,7 +113,20 @@ function AccountSetup() {
             name="card_number"
             onChange={handleCardNumberChange}
           />
-          <input
+          {/* <input
+            type="tel"
+            inputMode="numeric"
+            pattern="[0-9\s]{13,19}"
+            maxLength="19"
+            placeholder="xxxx xxxx xxxx xxxx"
+            id="card_number"
+            name="card_number"
+            onChange={handleCardNumberChange}
+          /> */}
+          <InputField
+            required
+            label={"mm/yy *"}
+            data={"expiration_date"}
             type="text"
             id="expiration_date"
             name="expiration_date"
@@ -98,8 +135,25 @@ function AccountSetup() {
             maxLength={5}
             onChange={handleExpirationDateChange}
           />
+          {/* <input
+            type="text"
+            id="expiration_date"
+            name="expiration_date"
+            placeholder="MM/YY"
+            pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
+            maxLength={5}
+            onChange={handleExpirationDateChange}
+          /> */}
         </div>
-        <button type="submit">Profile Complete </button>
+        <div className={style.accSetupFormButton}>
+          <BlueButton label={"Profile Complete"} />
+        </div>
+        {/* ist hier type notwendig?? */}
+        {/* <button
+          className={style.accSetupFormButton}
+          type="submit">
+          Profile Complete
+        </button> */}
       </form>
     </div>
   )
