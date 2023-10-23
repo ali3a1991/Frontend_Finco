@@ -13,28 +13,29 @@ import { TransactionsContext } from "../../../contexts/transactionsContext"
 function Home() {
   const [totalExpense, setTotalExpense] = useState(0)
   const [totalIncome, setTotalIncome] = useState(0)
-  const { transactionsData, setTransactionsData } = useContext(TransactionsContext)
+  const { transactionsData, setTransactionsData } =
+    useContext(TransactionsContext)
   const { userData } = useContext(UserContext)
 
-  useEffect(() => {
-    console.log(userData)
-    fetch(import.meta.env.VITE_SERVER + "api/transactions/data", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ card_id: userData.userAllCards[0]._id }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        }
-      })
-      .then((data) => {
-        console.log(data)
-        setTransactionsData(data)
-      })
-  }, [])
+  // useEffect(() => {
+  //   console.log(userData)
+  //   fetch(import.meta.env.VITE_SERVER + "api/transactions/data", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({ card_id: userData.userAllCards[0]._id }),
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json()
+  //       }
+  //     })
+  //     .then((data) => {
+  //       console.log(data)
+  //       setTransactionsData(data)
+  //     })
+  // }, [])
 
   console.log(userData)
 

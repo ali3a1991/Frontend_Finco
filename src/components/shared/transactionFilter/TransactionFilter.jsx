@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import style from "../transactionFilter/TransactionFilter.module.scss"
 import ExpenseButton from "../Buttons/Expense/ExpenseButton"
 import IncomeButton from "../Buttons/Income/IncomeButton"
 import { TransactionsContext } from "../../../contexts/transactionsContext"
@@ -38,16 +39,16 @@ function TransactionFilter({
   }, [transactionsData])
 
   return (
-    <div>
-      <ExpenseButton
-        totalExpense={totalExpense}
-        handleExpenseFilter={handleExpenseFilter}
-        expenseActive={expenseActive}
-      />
+    <div className={style.buttons_container}>
       <IncomeButton
         handleIncomeFilter={handleIncomeFilter}
         totalIncome={totalIncome}
         incomeActive={incomeActive}
+      />
+      <ExpenseButton
+        totalExpense={totalExpense}
+        handleExpenseFilter={handleExpenseFilter}
+        expenseActive={expenseActive}
       />
     </div>
   )

@@ -20,13 +20,7 @@ const Protected = () => {
     validateToken()
   }, [])
 
-  return (
-    <section>
-      {auth && 
-        <Outlet />
-      }
-    </section>
-  )
+  return <section>{auth && <Outlet />}</section>
 }
 
 export default Protected

@@ -34,6 +34,18 @@ function Report() {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 10)
   }
 
+  const currentMonth = new Date()
+  const startDate = new Date(
+    currentMonth.getFullYear(),
+    currentMonth.getMonth(),
+    1
+  )
+  const endDate = new Date(
+    currentMonth.getFullYear(),
+    currentMonth.getMonth() + 1,
+    0
+  )
+
   console.log(fetchData3)
 
   return isLoading ? (
@@ -50,23 +62,35 @@ function Report() {
             height={300}
             series={[
               {
-                data: fetchData3.map((item) => item.value),
+                data: fetchData3
+                  .filter((item) => {
+                    const itemDate = new Date(item.date)
+                    return itemDate >= startDate && itemDate <= endDate
+                  })
+                  .map((item) => item.value),
                 label: "Transaction Value",
                 area: true,
                 showMark: false,
-                color: "#77C7C1",
+                color: "#5B81B9",
               },
             ]}
             xAxis={[
               {
                 scaleType: "point",
-                data: fetchData3.map((item) =>
-                  new Date(item.date).toLocaleDateString("en-GB", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
+                data: fetchData3
+                  .filter((item) => {
+                    const itemDate = new Date(item.date)
+                    return itemDate >= startDate && itemDate <= endDate
                   })
-                ),
+                  .reverse()
+                  .map(
+                    (item) =>
+                      `${new Date(item.date).getDate()}-${new Date(
+                        item.date
+                      ).toLocaleString("default", {
+                        month: "short",
+                      })}-${new Date(item.date).getFullYear()}`
+                  ),
               },
             ]}
             sx={{
