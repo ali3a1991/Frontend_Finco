@@ -9,12 +9,10 @@ import { UserContext } from "../../../contexts/userContext.jsx"
 
 function Login() {
   const navigator = useNavigate()
-
   const { setUserData } = useContext(UserContext)
 
   async function submitLogin(event) {
     event.preventDefault()
-
     const form = new FormData(event.target)
 
     const response = await fetch(
