@@ -14,6 +14,12 @@
   padding: 0 24px 0 24px;
   line-height: 1.5rem;
 
+  p:nth-of-type(1) {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+  }
+
   p:nth-of-type(2) {
     font-size: 1.5rem;
     font-weight: 700;

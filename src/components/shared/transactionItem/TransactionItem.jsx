@@ -19,31 +19,31 @@ function TransactionItem({ transaction }) {
     <div className={style.item_container}>
       <div className={style.container_left}>
         <div className={style.icon_container}>
-          {transaction.category === "salary" && (
+          {transaction.category === "Salary" && (
             <img
               src={salaryIcon}
               alt="transaction icon"
             />
           )}
-          {transaction.category === "insurance" && (
+          {transaction.category === "Insurance" && (
             <img
               src={insuranceIcon}
               alt=""
             />
           )}
-          {transaction.category === "rent" && (
+          {transaction.category === "Rent" && (
             <img
               src={rentIcon}
               alt=""
             />
           )}
-          {transaction.category === "shopping" && (
+          {transaction.category === "Shopping" && (
             <img
               src={shoppingIcon}
               alt=""
             />
           )}
-          {transaction.category === "foodAndDrink" && (
+          {transaction.category === "Food & Drink" && (
             <img
               src={foodAndDrinkIcon}
               alt=""
@@ -56,10 +56,14 @@ function TransactionItem({ transaction }) {
         </div>
       </div>
       {transaction.transaction === "income" && (
-        <p className={style.income_value}>{transaction.value} €</p>
+        <p className={style.income_value}>
+          {transaction.value.toLocaleString()} €
+        </p>
       )}
       {transaction.transaction === "expense" && (
-        <p className={style.expense_value}>- {transaction.value} €</p>
+        <p className={style.expense_value}>
+          - {transaction.value.toLocaleString()} €
+        </p>
       )}
     </div>
   )

@@ -11,15 +11,28 @@ import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo"
-import { useState } from "react"
+import Header from "../../shared/Header/Header.jsx"
+import { useState, useEffect } from "react"
 import { TransactionsContext } from "../../../contexts/transactionsContext"
 import { UserContext } from "../../../contexts/userContext"
-import BlueButton from "../../shared/BlueButtons/BlueButton"
+import CircularProgress from "@mui/material/CircularProgress"
+import Box from "@mui/material/Box"
+
 
 function AddIncome() {
   const [selectedDate, setSelectedDate] = useState(dayjs())
   const { setTransactionsData } = useContext(TransactionsContext)
   const { userData } = useContext(UserContext)
+  const [isLoading, setIsLoading] = useState(true)
+
+  console.log(userData)
+
+  useEffect(() => {
+    if (Object.keys(userData).length > 0) {
+      setIsLoading(false)
+    }
+  }, [userData])
+
   const cards = userData.userAllCards
 
   async function submitIncome(event) {
@@ -35,7 +48,7 @@ function AddIncome() {
       import.meta.env.VITE_SERVER + "api/transactions/add",
       {
         method: "POST",
-        // credentials: "include",
+        credentials: "include",
         body: form,
       }
     )
@@ -49,7 +62,17 @@ function AddIncome() {
     }
   }
 
-  return (
+  return isLoading ? (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}>
+      <CircularProgress />
+    </Box>
+  ) : (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["MobileDateTimePicker"]}></DemoContainer>
@@ -92,18 +115,19 @@ function AddIncome() {
                 />
               </FormControl>
             </div>
-            <div className={style.addIncomeFormCategory}>
-              <label>Category</label>
-              <select
-                className={style.addIncomeFormCategorySelect}
-                name="category"
-                id="category">
-                <option value="salary">Salary</option>
-                <option value="shopping">Shopping</option>
-                <option value="food&drink">Food & Drink</option>
-                <option value="insurance">Insurance</option>
-                <option value="rent">Rent</option>
-              </select>
+            <div>
+              <label>
+                Category:
+                <select
+                  name="category"
+                  id="category">
+                  <option value="Salary">Salary</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Food & Drink">Food & Drink</option>
+                  <option value="Insurance">Insurance</option>
+                  <option value="Rent">Rent</option>
+                </select>
+              </label>
             </div>
             <div className={style.addIncomeFormDate}>
               <label>Date</label>
