@@ -31,13 +31,13 @@ function Home() {
     setTotalIncome(totalIncome)
   }, [transactionsData])
 
-  console.log(transactionsData)
-
   useEffect(() => {
-    if (transactionsData !== null) {
+    if (transactionsData.length > 0) {
       setIsLoading(false)
     }
   }, [transactionsData])
+
+  console.log(transactionsData)
 
   return isLoading ? (
     <Box
