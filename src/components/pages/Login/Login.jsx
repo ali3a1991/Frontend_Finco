@@ -6,7 +6,6 @@ import InputField from "../../shared/Input/InputField.jsx"
 import BlueButton from "../../shared/BlueButtons/BlueButton"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
-import { OutlinedInput } from "@mui/material"
 
 function Login() {
   const navigator = useNavigate()

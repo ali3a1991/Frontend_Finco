@@ -1,7 +1,5 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
-import { UserContext } from "../../../contexts/userContext"
-import { TransactionsContext } from "../../../contexts/transactionsContext"
 
 const Protected = () => {
   const [auth, setAuth] = useState(false)
