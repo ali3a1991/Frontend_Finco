@@ -114,19 +114,18 @@ function AddIncome() {
                 />
               </FormControl>
             </div>
-            <div>
-              <label>
-                Category:
-                <select
-                  name="category"
-                  id="category">
-                  <option value="Salary">Salary</option>
-                  <option value="Shopping">Shopping</option>
-                  <option value="Food & Drink">Food & Drink</option>
-                  <option value="Insurance">Insurance</option>
-                  <option value="Rent">Rent</option>
-                </select>
-              </label>
+            <div className={style.addIncomeFormCategory}>
+              <label>Category:</label>
+              <select
+                className={style.addIncomeFormCategorySelect}
+                name="category"
+                id="category">
+                <option value="Salary">Salary</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Food & Drink">Food & Drink</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Rent">Rent</option>
+              </select>
             </div>
             <div className={style.addIncomeFormDate}>
               <label>Date</label>

@@ -112,19 +112,18 @@ function AddExpenses() {
                 />
               </FormControl>
             </div>
-            <div>
-              <label>
-                Category:
-                <select
-                  name="category"
-                  id="category">
-                  <option value="Salary">Salary</option>
-                  <option value="Shopping">Shopping</option>
-                  <option value="Food & Drink">Food & Drink</option>
-                  <option value="Insurance">Insurance</option>
-                  <option value="Rent">Rent</option>
-                </select>
-              </label>
+            <div className={style.addExpenseFormCategory}>
+              <label>Category</label>
+              <select
+                className={style.addExpenseFormCategorySelect}
+                name="category"
+                id="category">
+                <option value="Salary">Salary</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Food & Drink">Food & Drink</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Rent">Rent</option>
+              </select>
             </div>
             <div className={style.addExpenseFormDate}>
               <label>Date</label>
