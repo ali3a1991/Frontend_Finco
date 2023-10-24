@@ -5,12 +5,15 @@ import Header from "../../shared/Header/Header.jsx"
 import DateItem from "../../shared/dateItem/DateItem"
 import Filter from "../../shared/filter/Filter"
 import { TransactionsContext } from "../../../contexts/transactionsContext"
+import CircularProgress from "@mui/material/CircularProgress"
+import Box from "@mui/material/Box"
 
 function Transaction() {
   const { transactionsData } = useContext(TransactionsContext)
   const [transactions, setTransactions] = useState([])
   const [result, setResult] = useState(true)
   const [fetchData, setFetchData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     setFetchData(transactionsData)
@@ -74,7 +77,23 @@ function Transaction() {
     else return num
   }
 
-  return (
+  useEffect(() => {
+    if (transactionsData.length > 0) {
+      setIsLoading(false)
+    }
+  }, [fetchData])
+
+  return isLoading ? (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}>
+      <CircularProgress />
+    </Box>
+  ) : (
     <>
       <Header />
       <div>

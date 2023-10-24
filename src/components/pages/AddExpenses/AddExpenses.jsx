@@ -9,14 +9,24 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo"
 import Header from "../../shared/Header/Header.jsx"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
 import { UserContext } from "../../../contexts/userContext.jsx"
+import CircularProgress from "@mui/material/CircularProgress"
+import Box from "@mui/material/Box"
 
 function AddExpenses() {
   const [selectedDate, setSelectedDate] = useState(dayjs())
   const { setTransactionsData } = useContext(TransactionsContext)
   const { userData } = useContext(UserContext)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    if (Object.keys(userData).length > 0) {
+      setIsLoading(false)
+    }
+  }, [userData])
+
   const cards = userData.userAllCards
 
   async function submitExpense(event) {
@@ -32,7 +42,7 @@ function AddExpenses() {
       import.meta.env.VITE_SERVER + "api/transactions/add",
       {
         method: "POST",
-        // credentials: "include",
+        credentials: "include",
         body: form,
       }
     )
@@ -46,7 +56,17 @@ function AddExpenses() {
     }
   }
 
-  return (
+  return isLoading ? (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}>
+      <CircularProgress />
+    </Box>
+  ) : (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["MobileDateTimePicker"]}></DemoContainer>

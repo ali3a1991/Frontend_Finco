@@ -8,13 +8,15 @@ import Navi from "../../shared/Navbar/Navbar.jsx"
 import HomeLimit from "../../shared/HomeLimit/HomeLimit.jsx"
 import { useContext } from "react"
 import { TransactionsContext } from "../../../contexts/transactionsContext"
+import CircularProgress from "@mui/material/CircularProgress"
+import Box from "@mui/material/Box"
 
 function Home() {
   const [totalExpense, setTotalExpense] = useState(0)
   const [totalIncome, setTotalIncome] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
 
   const { transactionsData } = useContext(TransactionsContext)
-
 
   useEffect(() => {
     let totalExpense = 0
@@ -30,7 +32,23 @@ function Home() {
     setTotalIncome(totalIncome)
   }, [transactionsData])
 
-  return (
+  useEffect(() => {
+    if (transactionsData.length > 0) {
+      setIsLoading(false)
+    }
+  }, [transactionsData])
+
+  return isLoading ? (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}>
+      <CircularProgress />
+    </Box>
+  ) : (
     <div className={style.home}>
       <div className={style.header}>
         <Header />
