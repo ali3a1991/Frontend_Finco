@@ -31,8 +31,10 @@ function Home() {
     setTotalIncome(totalIncome)
   }, [transactionsData])
 
+  console.log(transactionsData)
+
   useEffect(() => {
-    if (transactionsData.length > 0) {
+    if (transactionsData !== null) {
       setIsLoading(false)
     }
   }, [transactionsData])
