@@ -11,40 +11,8 @@ import AddExpenses from "./components/pages/AddExpenses/AddExpenses.jsx"
 import Report from "./components/pages/Report/Report.jsx"
 import Account from "./components/pages/Account/Account.jsx"
 import Protected from "./components/shared/Protected/Protected.jsx"
-import { useContext, useEffect } from "react"
-import { UserContext } from "./contexts/userContext.jsx"
-import { TransactionsContext } from "./contexts/transactionsContext.jsx"
 
 function App() {
-  const { setUserData } = useContext(UserContext)
-  const { setTransactionsData } = useContext(TransactionsContext)
-
-  useEffect(() => {
-    const reload = async () => {
-      const response = await fetch(
-        import.meta.env.VITE_SERVER + "api/auth/get",
-        {
-          credentials: "include",
-        }
-      )
-      const data = await response.json()
-      const res = await fetch(
-        import.meta.env.VITE_SERVER + "api/transactions/data",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ card_id: data.userAllCards[0]._id }),
-        }
-      )
-      const trans = await res.json()
-      setUserData(data)
-      setTransactionsData(trans)
-    }
-    reload()
-  }, [])
-
   return (
     <>
       <Routes>
@@ -70,12 +38,12 @@ function App() {
             element={<AccountSetup />}
           />
           <Route
-            path="/account-settings"
-            element={<Account />}
-          />
-          <Route
             path="/home"
             element={<Home />}
+          />
+          <Route
+            path="/account-settings"
+            element={<Account />}
           />
           <Route
             path="/transactions"
