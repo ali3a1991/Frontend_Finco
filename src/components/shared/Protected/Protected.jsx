@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
+import { UserContext } from "../../../contexts/userContext.jsx"
+import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
+import { useContext } from "react"
 
 const Protected = () => {
   const [auth, setAuth] = useState(false)
+  const { setUserData } = useContext(UserContext)
+  const { setTransactionsData } = useContext(TransactionsContext)
 
   const navigator = useNavigate()
 
@@ -18,6 +23,33 @@ const Protected = () => {
       else setAuth(true)
     }
     validateToken()
+  }, [])
+
+  useEffect(() => {
+    const reload = async () => {
+      const response = await fetch(
+        import.meta.env.VITE_SERVER + "api/auth/get",
+        {
+          credentials: "include",
+        }
+      )
+      const data = await response.json()
+      const res = await fetch(
+        import.meta.env.VITE_SERVER + "api/transactions/data",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ card_id: data.userAllCards[0]._id }),
+        }
+      )
+      const trans = await res.json()
+      setUserData(data)
+      setTransactionsData(trans)
+      console.log(trans)
+    }
+    reload()
   }, [])
 
   return <section>{auth && <Outlet />}</section>

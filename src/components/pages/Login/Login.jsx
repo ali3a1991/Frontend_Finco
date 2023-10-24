@@ -6,10 +6,12 @@ import InputField from "../../shared/Input/InputField.jsx"
 import BlueButton from "../../shared/BlueButtons/BlueButton"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
+import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
 
 function Login() {
   const navigator = useNavigate()
   const { setUserData } = useContext(UserContext)
+  const { setTransactionsData } = useContext(TransactionsContext)
 
   async function submitLogin(event) {
     event.preventDefault()
@@ -27,6 +29,7 @@ function Login() {
       console.log("Login successful!")
       const data = await response.json()
       setUserData(data)
+      setTransactionsData(data.transactions_default_card)
       navigator("/home")
     } else {
       console.log("Login failed.")
