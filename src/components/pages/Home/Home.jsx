@@ -12,9 +12,7 @@ import { TransactionsContext } from "../../../contexts/transactionsContext"
 function Home() {
   const [totalExpense, setTotalExpense] = useState(0)
   const [totalIncome, setTotalIncome] = useState(0)
-
   const { transactionsData } = useContext(TransactionsContext)
-
 
   useEffect(() => {
     let totalExpense = 0

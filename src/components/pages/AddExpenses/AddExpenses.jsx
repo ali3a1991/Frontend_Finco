@@ -1,5 +1,8 @@
 import React, { useContext } from "react"
 import dayjs from "dayjs"
+import Header from "../../shared/Header/Header.jsx"
+import style from "./AddExpense.module.scss"
+import CreditCard from "../../shared/CreditCard/CreditCard.jsx"
 import { InputLabel } from "@mui/material"
 import { OutlinedInput } from "@mui/material"
 import { InputAdornment } from "@mui/material"
@@ -8,10 +11,10 @@ import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo"
-import Header from "../../shared/Header/Header.jsx"
 import { useState } from "react"
 import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
 import { UserContext } from "../../../contexts/userContext.jsx"
+import BlueButton from "../../shared/BlueButtons/BlueButton.jsx"
 
 function AddExpenses() {
   const [selectedDate, setSelectedDate] = useState(dayjs())
@@ -51,10 +54,15 @@ function AddExpenses() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["MobileDateTimePicker"]}></DemoContainer>
         <Header />
-        <section>
-          <h1>Add expenses</h1>
-          <form onSubmit={submitExpense}>
+        <section className={style.addExpense}>
+          <div className={style.addExpenseHeadline}>
+            <h1>Add expense</h1>
+          </div>
+          <form
+            className={style.addExpenseForm}
+            onSubmit={submitExpense}>
             <select
+              className={style.addExpenseFormSelect}
               name="card_id"
               id="card_id">
               {cards.map((card) => (
@@ -65,12 +73,16 @@ function AddExpenses() {
                 </option>
               ))}
             </select>
-            <div>
-              <FormControl sx={{ m: 1 }}>
+            <div className={style.addExpenseFormCard}>
+              <CreditCard />
+            </div>
+            <div className={style.addExpenseFormInput}>
+              <FormControl sx={{ m: 1, width: "90%" }}>
                 <InputLabel htmlFor="outlined-adornment-amount">
                   Amount
                 </InputLabel>
                 <OutlinedInput
+                  sx={{ borderRadius: "50px" }}
                   id="value"
                   name="value"
                   startAdornment={
@@ -80,32 +92,32 @@ function AddExpenses() {
                 />
               </FormControl>
             </div>
-            <div>
-              <label>
-                Category:
-                <select
-                  name="category"
-                  id="category">
-                  <option value="salary">Salary</option>
-                  <option value="shopping">Shopping</option>
-                  <option value="food&drink">Food & Drink</option>
-                  <option value="insurance">Insurance</option>
-                  <option value="rent">Rent</option>
-                </select>
-              </label>
+            <div className={style.addExpenseFormCategory}>
+              <label>Category</label>
+              <select
+                className={style.addExpenseFormCategorySelect}
+                name="category"
+                id="category">
+                <option value="salary">Salary</option>
+                <option value="shopping">Shopping</option>
+                <option value="food&drink">Food & Drink</option>
+                <option value="insurance">Insurance</option>
+                <option value="rent">Rent</option>
+              </select>
             </div>
-            <div>
-              <label>
-                Date & Time:
-                <MobileDateTimePicker
-                  value={selectedDate}
-                  onChange={(newValue) => {
-                    setSelectedDate(newValue)
-                  }}
-                />
-              </label>
+            <div className={style.addExpenseFormDate}>
+              <label>Date</label>
+              <MobileDateTimePicker
+                className={style.addExpenseFormDatePicker}
+                value={selectedDate}
+                onChange={(newValue) => {
+                  setSelectedDate(newValue)
+                }}
+              />
             </div>
-            <button type="submit">Add expenses</button>
+            <div className={style.addExpenseFormBlueButton}>
+              <BlueButton label="Add Expense" />
+            </div>
           </form>
         </section>
       </LocalizationProvider>
