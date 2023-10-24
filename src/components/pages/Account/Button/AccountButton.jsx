@@ -8,7 +8,7 @@ function AccountButton(props) {
         alt=""
       />
       <p>{props.label}</p>
-      <p>></p>
+      <p></p>
     </div>
   )
 }
