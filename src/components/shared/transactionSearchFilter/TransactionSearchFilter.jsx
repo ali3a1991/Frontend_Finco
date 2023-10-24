@@ -1,4 +1,7 @@
 import React, { useRef } from "react"
+import style from "../../shared/transactionSearchFilter/TransactionSearchFilter.module.scss"
+import InputField from "../../shared/Input/InputField.jsx"
+import searchIcon from "../../../assets/images/search.svg"
 
 function TransactionSearchFilter({ setDateRevValue, setSearchValue }) {
   const dateRef = useRef()
@@ -13,17 +16,26 @@ function TransactionSearchFilter({ setDateRevValue, setSearchValue }) {
     )
   }
 
+  const focusDateInput = () => {
+    dateRef.current.focus()
+  }
+
   return (
     <div>
-      <input
-        type="text"
-        onChange={searchText}
-      />
-      <input
-        ref={dateRef}
-        type="date"
-        onChange={setDateFilter}
-      />
+      <div className={style.search_icon_container}>
+        <img
+          src={searchIcon}
+          alt="Search Icon"
+          className={style.search_icon}
+        />
+        <InputField
+          onChange={searchText}
+          type={"text"}
+        />
+      </div>
+      <div className={style.date_container}>
+        <InputField type={"date"} />
+      </div>
     </div>
   )
 }

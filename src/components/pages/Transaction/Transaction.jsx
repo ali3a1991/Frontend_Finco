@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import style from "../Transaction/Transaction.module.scss"
 import TransactionItem from "../../shared/transactionItem/TransactionItem"
 import Navbar from "../../shared/Navbar/Navbar.jsx"
 import Header from "../../shared/Header/Header.jsx"
@@ -78,11 +79,11 @@ function Transaction() {
     <>
       <Header />
       <div>
-        <p>All Transactions</p>
+        <p className={style.transactions_heading}>All Transactions</p>
         <Filter setFetchData={setFetchData} />
       </div>
       {result ? (
-        <main>
+        <main className={style.list_container}>
           {transactions.map((transaction, key) =>
             transaction.value !== "" ? (
               <TransactionItem

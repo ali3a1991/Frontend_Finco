@@ -63,6 +63,7 @@ function Login() {
           <InputField
             label={"Password"}
             data={"password"}
+            type={"password"}
           />
         </div>
         <div className={style.loginForgot}>
