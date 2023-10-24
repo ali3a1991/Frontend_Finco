@@ -22,7 +22,7 @@ function TransactionItem({ transaction }) {
           {transaction.category === "salary" && (
             <img
               src={salaryIcon}
-              alt=""
+              alt="transaction icon"
             />
           )}
           {transaction.category === "insurance" && (
