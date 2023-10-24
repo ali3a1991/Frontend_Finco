@@ -47,7 +47,6 @@ const Protected = () => {
       const trans = await res.json()
       setUserData(data)
       setTransactionsData(trans)
-      console.log(trans)
     }
     reload()
   }, [])
