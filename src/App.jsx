@@ -38,12 +38,12 @@ function App() {
             element={<AccountSetup />}
           />
           <Route
-            path="/account-settings"
-            element={<Account />}
-          />
-          <Route
             path="/home"
             element={<Home />}
+          />
+          <Route
+            path="/account-settings"
+            element={<Account />}
           />
           <Route
             path="/transactions"
