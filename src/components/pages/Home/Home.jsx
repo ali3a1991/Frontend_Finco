@@ -15,7 +15,6 @@ function Home() {
   const [totalExpense, setTotalExpense] = useState(0)
   const [totalIncome, setTotalIncome] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
-
   const { transactionsData } = useContext(TransactionsContext)
 
   useEffect(() => {

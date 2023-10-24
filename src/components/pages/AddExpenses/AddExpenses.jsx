@@ -1,5 +1,8 @@
 import React, { useContext } from "react"
 import dayjs from "dayjs"
+import Header from "../../shared/Header/Header.jsx"
+import style from "./AddExpense.module.scss"
+import CreditCard from "../../shared/CreditCard/CreditCard.jsx"
 import { InputLabel } from "@mui/material"
 import { OutlinedInput } from "@mui/material"
 import { InputAdornment } from "@mui/material"
@@ -14,6 +17,7 @@ import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
 import { UserContext } from "../../../contexts/userContext.jsx"
 import CircularProgress from "@mui/material/CircularProgress"
 import Box from "@mui/material/Box"
+
 
 function AddExpenses() {
   const [selectedDate, setSelectedDate] = useState(dayjs())
@@ -71,10 +75,15 @@ function AddExpenses() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["MobileDateTimePicker"]}></DemoContainer>
         <Header />
-        <section>
-          <h1>Add expenses</h1>
-          <form onSubmit={submitExpense}>
+        <section className={style.addExpense}>
+          <div className={style.addExpenseHeadline}>
+            <h1>Add expense</h1>
+          </div>
+          <form
+            className={style.addExpenseForm}
+            onSubmit={submitExpense}>
             <select
+              className={style.addExpenseFormSelect}
               name="card_id"
               id="card_id">
               {cards.map((card) => (
@@ -85,12 +94,16 @@ function AddExpenses() {
                 </option>
               ))}
             </select>
-            <div>
-              <FormControl sx={{ m: 1 }}>
+            <div className={style.addExpenseFormCard}>
+              <CreditCard />
+            </div>
+            <div className={style.addExpenseFormInput}>
+              <FormControl sx={{ m: 1, width: "90%" }}>
                 <InputLabel htmlFor="outlined-adornment-amount">
                   Amount
                 </InputLabel>
                 <OutlinedInput
+                  sx={{ borderRadius: "50px" }}
                   id="value"
                   name="value"
                   startAdornment={
@@ -114,18 +127,19 @@ function AddExpenses() {
                 </select>
               </label>
             </div>
-            <div>
-              <label>
-                Date & Time:
-                <MobileDateTimePicker
-                  value={selectedDate}
-                  onChange={(newValue) => {
-                    setSelectedDate(newValue)
-                  }}
-                />
-              </label>
+            <div className={style.addExpenseFormDate}>
+              <label>Date</label>
+              <MobileDateTimePicker
+                className={style.addExpenseFormDatePicker}
+                value={selectedDate}
+                onChange={(newValue) => {
+                  setSelectedDate(newValue)
+                }}
+              />
             </div>
-            <button type="submit">Add expenses</button>
+            <div className={style.addExpenseFormBlueButton}>
+              <BlueButton label="Add Expense" />
+            </div>
           </form>
         </section>
       </LocalizationProvider>

@@ -1,7 +1,9 @@
 import React, { useContext } from "react"
 import style from "../AddIncome/AddIncome.module.scss"
 import dayjs from "dayjs"
-import { InputLabel } from "@mui/material"
+import Header from "../../shared/Header/Header.jsx"
+import CreditCard from "../../shared/CreditCard/CreditCard"
+import { InputLabel, Select, MenuItem } from "@mui/material"
 import { OutlinedInput } from "@mui/material"
 import { InputAdornment } from "@mui/material"
 import { FormControl } from "@mui/material"
@@ -15,6 +17,7 @@ import { TransactionsContext } from "../../../contexts/transactionsContext"
 import { UserContext } from "../../../contexts/userContext"
 import CircularProgress from "@mui/material/CircularProgress"
 import Box from "@mui/material/Box"
+
 
 function AddIncome() {
   const [selectedDate, setSelectedDate] = useState(dayjs())
@@ -52,10 +55,10 @@ function AddIncome() {
     if (response.ok) {
       const data = await response.json()
       setTransactionsData(data)
-      console.log("Submit successful!")
+      // console.log("Submit successful!")
       event.target.reset()
     } else {
-      console.log("Submit failed.")
+      // console.log("Submit failed.")
     }
   }
 
@@ -74,10 +77,15 @@ function AddIncome() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["MobileDateTimePicker"]}></DemoContainer>
         <Header />
-        <section>
-          <h1>Add income</h1>
-          <form onSubmit={submitIncome}>
+        <section className={style.addIncome}>
+          <div className={style.addIncomeHeadline}>
+            <h1>Add income</h1>
+          </div>
+          <form
+            className={style.addIncomeForm}
+            onSubmit={submitIncome}>
             <select
+              className={style.addIncomeFormSelect}
               name="card_id"
               id="card_id">
               {cards.map((card) => (
@@ -88,13 +96,16 @@ function AddIncome() {
                 </option>
               ))}
             </select>
-            <div>
-              <FormControl sx={{ m: 1, width: "300px" }}>
+            <div className={style.addIncomeFormCard}>
+              <CreditCard />
+            </div>
+            <div className={style.addIncomeFormInput}>
+              <FormControl sx={{ m: 1, width: "90%" }}>
                 <InputLabel htmlFor="outlined-adornment-amount">
                   Amount
                 </InputLabel>
                 <OutlinedInput
-                  sx={{ borderRadius: "20px" }}
+                  sx={{ borderRadius: "50px" }}
                   id="value"
                   name="value"
                   startAdornment={
@@ -118,18 +129,19 @@ function AddIncome() {
                 </select>
               </label>
             </div>
-            <div>
-              <label>
-                Date & Time:
-                <MobileDateTimePicker
-                  value={selectedDate}
-                  onChange={(newValue) => {
-                    setSelectedDate(newValue)
-                  }}
-                />
-              </label>
+            <div className={style.addIncomeFormDate}>
+              <label>Date</label>
+              <MobileDateTimePicker
+                className={style.addIncomeFormDatePicker}
+                value={selectedDate}
+                onChange={(newValue) => {
+                  setSelectedDate(newValue)
+                }}
+              />
             </div>
-            <button type="submit">Add Income</button>
+            <div className={style.addIncomeFormBlueButton}>
+              <BlueButton label="Add Income" />
+            </div>
           </form>
         </section>
       </LocalizationProvider>

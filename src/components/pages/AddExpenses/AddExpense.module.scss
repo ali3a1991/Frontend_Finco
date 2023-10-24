@@ -1,11 +1,11 @@
-.addIncomeHeadline {
+.addExpenseHeadline {
   padding: 0 0 0 24px;
   margin-bottom: 2rem;
   font-size: 2rem;
-  color: #298bff;
+  color: #ffaa1a;
 }
 
-.addIncomeFormSelect {
+.addExpenseFormSelect {
   width: 40%;
   height: 2rem;
   border-radius: 25px;
@@ -13,17 +13,17 @@
   padding-left: 0.5rem;
 }
 
-.addIncomeFormCard {
+.addExpenseFormCard {
   margin-bottom: 1rem;
 }
 
-.addIncomeFormInput {
+.addExpenseFormInput {
   margin-bottom: 1.5rem;
   text-align: center;
   width: 100%;
 }
 
-.addIncomeFormCategory {
+.addExpenseFormCategory {
   padding: 0 0 0 24px;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@
   }
 }
 
-.addIncomeFormCategorySelect {
+.addExpenseFormCategorySelect {
   height: 56px;
   border-radius: 50px;
   width: 100%;
@@ -42,12 +42,12 @@
   border: solid 1px rgb(199, 199, 199);
 }
 
-.addIncomeFormDate {
+.addExpenseFormDate {
   display: flex;
   flex-direction: column;
   margin: 0 24px 2rem 24px;
 }
 
-.addIncomeFormBlueButton {
+.addExpenseFormBlueButton {
   text-align: center;
 }

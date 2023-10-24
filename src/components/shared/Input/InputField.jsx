@@ -28,6 +28,7 @@ function InputField(props) {
           name={props.data}
           onChange={props.onChange}
           maxLength={props.maxLength}
+          label={props.label}
         />
       </FormControl>
     </div>
