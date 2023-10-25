@@ -3,7 +3,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 1s ease-in-out;
+  animation: fadeOutUp 3s forwards;
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
 }
 
 .splashOnboarding {
