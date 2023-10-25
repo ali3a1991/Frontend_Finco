@@ -13,8 +13,8 @@ function CreditCard() {
     let cardExpiration = ''
 
     if (userData.userAllCards) {
-      cardNumber = userData.userAllCards[0].card_number?.slice(15, 19)
-      cardExpiration = userData.userAllCards[0].expiration_date
+      cardNumber = userData.userAllCards[0]?.card_number.slice(15, 19)
+      cardExpiration = userData.userAllCards[0]?.expiration_date
     }
     
     setCardNum(cardNumber)
