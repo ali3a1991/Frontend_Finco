@@ -1,0 +1,22 @@
+.logoutButton {
+  width: 90%;
+  text-align: center;
+  margin: 0 24px 1.5rem 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 15px;
+  background-color: #f7f7f7;
+  font-weight: 700;
+  border: none;
+
+  div {
+    display: flex;
+    gap: 8px;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
