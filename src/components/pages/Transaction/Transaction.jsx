@@ -98,7 +98,7 @@ function Transaction() {
           )}
         </main>
       ) : (
-        <p>No Transaction</p>
+        <p className={style.no_transaction}>No Transaction</p>
       )}
       <Navbar />
     </>

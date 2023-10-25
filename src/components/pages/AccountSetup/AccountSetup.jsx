@@ -105,7 +105,7 @@ function AccountSetup() {
             type="tel"
             inputMode="numeric"
             pattern="[0-9\s]{13,19}"
-            maxLength="19"
+            maxLength={19}
             placeholder="xxxx xxxx xxxx xxxx"
             id="card_number"
             name="card_number"
@@ -132,7 +132,7 @@ function AccountSetup() {
             maxLength={5}
             onChange={handleExpirationDateChange}
           /> */}
-          {err && <p>{err}</p>}
+          {err && <p className={style.error_message}>{err}</p>}
         </div>
         <div className={style.accSetupFormButton}>
           <BlueButton label={"Profile Complete"} />
