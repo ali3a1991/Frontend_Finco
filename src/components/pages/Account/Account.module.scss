@@ -1,0 +1,69 @@
+.accountFeather {
+  text-align: center;
+  margin: 2rem 24px 1.5rem 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 15px;
+  background-color: #f7f7f7;
+  font-weight: 700;
+
+  div {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.accountBell {
+  text-align: center;
+  margin: 0 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  border-radius: 15px 15px 0 0;
+  background-color: #f7f7f7;
+  border-bottom: solid 2px #ebebeb;
+  font-weight: 700;
+  div {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.accountGear {
+  text-align: center;
+  margin: 0 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  background-color: #f7f7f7;
+  border-bottom: solid 2px #ebebeb;
+  font-weight: 700;
+  div {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.accountFAQ {
+  text-align: center;
+  margin: 0 24px 1.5rem 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  border-radius: 0 0 15px 15px;
+  background-color: #f7f7f7;
+  font-weight: 700;
+
+  div {
+    display: flex;
+    gap: 8px;
+  }
+}

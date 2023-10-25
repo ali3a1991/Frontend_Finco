@@ -11,6 +11,7 @@ import AddExpenses from "./components/pages/AddExpenses/AddExpenses.jsx"
 import Report from "./components/pages/Report/Report.jsx"
 import Account from "./components/pages/Account/Account.jsx"
 import Protected from "./components/shared/Protected/Protected.jsx"
+import AutoRouter from "./components/shared/Protected/AutoRouter.jsx"
 
 function App() {
   return (
@@ -20,18 +21,20 @@ function App() {
           path="/"
           element={<OnboardingScreen />}
         />
-        <Route
-          path="/login"
-          element={<Login />}
-        />
-        <Route
-          path="/onboarding"
-          element={<OnboardingTutorial />}
-        />
-        <Route
-          path="/register"
-          element={<Register />}
-        />
+        <Route element={ <AutoRouter/>} >
+          <Route
+            path="/login"
+            element={<Login />}
+          />
+          <Route
+            path="/onboarding"
+            element={<OnboardingTutorial />}
+          />
+          <Route
+            path="/register"
+            element={<Register />}
+          />
+        </Route>
         <Route element={<Protected />}>
           <Route
             path="/account"
