@@ -20,7 +20,7 @@ function LogoutButton() {
     )
     if (response.ok) {
       console.log(response)
-      setUserData(null)
+      setUserData([])
       navigator("/login")
     }
   }
