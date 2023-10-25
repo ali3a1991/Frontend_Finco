@@ -15,9 +15,6 @@ function AccountSetup() {
 
   const userID = userData._id
 
-  // console.log(userData)
-  // console.log(userID)
-
   const navigator = useNavigate()
 
   async function submitProfile(event) {
@@ -36,12 +33,9 @@ function AccountSetup() {
       }
     )
     if (response.ok) {
-      // console.log("Registration successful!")
       const data = await response.json()
       setUserData(data)
       navigator("/home")
-    } else {
-      // console.log("Registration failed.")
     }
   }
 
@@ -113,16 +107,6 @@ function AccountSetup() {
             name="card_number"
             onChange={handleCardNumberChange}
           />
-          {/* <input
-            type="tel"
-            inputMode="numeric"
-            pattern="[0-9\s]{13,19}"
-            maxLength="19"
-            placeholder="xxxx xxxx xxxx xxxx"
-            id="card_number"
-            name="card_number"
-            onChange={handleCardNumberChange}
-          /> */}
           <InputField
             required
             label={"mm/yy *"}
@@ -135,25 +119,10 @@ function AccountSetup() {
             maxLength={5}
             onChange={handleExpirationDateChange}
           />
-          {/* <input
-            type="text"
-            id="expiration_date"
-            name="expiration_date"
-            placeholder="MM/YY"
-            pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
-            maxLength={5}
-            onChange={handleExpirationDateChange}
-          /> */}
         </div>
         <div className={style.accSetupFormButton}>
           <BlueButton label={"Profile Complete"} />
         </div>
-        {/* ist hier type notwendig?? */}
-        {/* <button
-          className={style.accSetupFormButton}
-          type="submit">
-          Profile Complete
-        </button> */}
       </form>
     </div>
   )

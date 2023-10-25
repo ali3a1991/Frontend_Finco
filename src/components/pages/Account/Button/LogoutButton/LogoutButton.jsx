@@ -19,7 +19,8 @@ function LogoutButton() {
       }
     )
     if (response.ok) {
-      setUserData([])
+      console.log(response)
+      setUserData(null)
       navigator("/login")
     }
   }

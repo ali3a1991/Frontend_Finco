@@ -34,8 +34,6 @@ function ExpenseButton({ totalExpense, handleExpenseFilter, expenseActive }) {
     return balance
   }, 0)
 
-  console.log(latestBalance)
-
   return (
     <div
       className={`${style.expenseButton} ${expenseActive && "active"}`}

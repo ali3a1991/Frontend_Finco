@@ -29,8 +29,6 @@ function Home() {
     setTotalIncome(totalIncome)
   }, [transactionsData])
 
-  console.log(transactionsData)
-
   return (
     <div className={style.home}>
       <div className={style.header}>

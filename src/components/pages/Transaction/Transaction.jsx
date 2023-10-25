@@ -18,7 +18,6 @@ function Transaction() {
   }, [transactionsData])
 
   useEffect(() => {
-    console.log(fetchData)
     if (fetchData.length > 0) {
       const transactionsArray = []
       const firstDate = new Date(fetchData[0].date)

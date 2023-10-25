@@ -8,8 +8,6 @@ import { UserContext } from "../../../contexts/userContext.jsx"
 function HomeLimit() {
   const { userData } = useContext(UserContext)
 
-  console.log(userData)
-
   return (
     <div className={style.homeLimit}>
       <Limit />
