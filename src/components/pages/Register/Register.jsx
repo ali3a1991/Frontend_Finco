@@ -89,7 +89,12 @@ function Register() {
             required
           />
           <label htmlFor="terms"></label>
-          Agree to our <span onClick={openTerms}>Terms and Service</span>
+          Agree to our{" "}
+          <span
+            onClick={openTerms}
+            className={style.terms_and_service}>
+            Terms and Service
+          </span>
           {showTerms && (
             <TermsAndService
               open={showTerms}
