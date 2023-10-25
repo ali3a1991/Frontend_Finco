@@ -10,8 +10,6 @@ function IncomeButton({ handleIncomeFilter, totalIncome, incomeActive }) {
 
   const { transactionsData } = useContext(TransactionsContext)
 
-  console.log(transactionsData)
-
   const currentMonth = new Date()
   const startDate = new Date(
     currentMonth.getFullYear(),
@@ -53,8 +51,6 @@ function IncomeButton({ handleIncomeFilter, totalIncome, incomeActive }) {
     },
     0
   )
-
-  console.log(balanceAtEarliestTransaction)
 
   return (
     <div
