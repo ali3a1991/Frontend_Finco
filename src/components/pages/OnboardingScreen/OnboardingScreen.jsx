@@ -8,50 +8,48 @@ import BlueButton from "../../shared/BlueButtons/BlueButton.jsx"
 function OnboardingScreen() {
   const [imageVisible, setImageVisible] = useState(true)
   const [showHome, setShowHome] = useState(false)
-  const navigator = useNavigate()
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setImageVisible(false)
-
-  //     setTimeout(() => {
-  //       setShowHome(true)
-  //     }, 1)
-  //   }, 3000)
-  // })
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setImageVisible(false)
+      setTimeout(() => {
+        setShowHome(true)
+      }, 1)
+    }, 2700)
+  })
 
   return (
     <div>
-      {/* <div className={style.splash}>
-        {imageVisible && (
+      {imageVisible ? (
+        <div className={style.splash}>
           <img
             src={Logo}
             alt="Logo"
             style={{ opacity: imageVisible ? 1 : 0 }}
           />
-        )}
-        {showHome && navigator("/home")}
-      </div> */}
-      <div className={style.splashOnboarding}>
-        <img
-          className={style.splashOnboardingCard}
-          src={Illustration1}
-          alt="Illustration1"
-        />
-        <div className={style.splashOnboardingText}>
-          <h1>Track your spend and income</h1>
-          <p>
-            Effortlessly monitor spending and earnings with Finco's
-            user-friendly onboarding
-          </p>
         </div>
-        <div className={style.splashOnboardingButtons}>
-          <Link to="/onboarding">
-            <BlueButton label={"Next"} />
-          </Link>
-          <Link to="/register">Skip</Link>
+      ) : showHome ? (
+        <div className={style.splashOnboarding}>
+          <img
+            className={style.splashOnboardingCard}
+            src={Illustration1}
+            alt="Illustration1"
+          />
+          <div className={style.splashOnboardingText}>
+            <h1>Track your spend and income</h1>
+            <p>
+              Effortlessly monitor spending and earnings with Finco's
+              user-friendly onboarding
+            </p>
+          </div>
+          <div className={style.splashOnboardingButtons}>
+            <Link to="/onboarding">
+              <BlueButton label={"Next"} />
+            </Link>
+            <Link to="/register">Skip</Link>
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   )
 }
