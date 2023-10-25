@@ -4,20 +4,14 @@ import InputField from "../../shared/Input/InputField.jsx"
 import searchIcon from "../../../assets/images/search.svg"
 
 function TransactionSearchFilter({ setDateRevValue, setSearchValue }) {
-  const dateRef = useRef()
-
-  const setDateFilter = () => {
-    setDateRevValue(dateRef.current.value)
+  const setDateFilter = (event) => {
+    setDateRevValue(event.target.value)
   }
 
   const searchText = (event) => {
     setSearchValue(
       event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1)
     )
-  }
-
-  const focusDateInput = () => {
-    dateRef.current.focus()
   }
 
   return (
@@ -34,7 +28,10 @@ function TransactionSearchFilter({ setDateRevValue, setSearchValue }) {
         />
       </div>
       <div className={style.date_container}>
-        <InputField type={"date"} />
+        <InputField
+          type={"date"}
+          onChange={setDateFilter}
+        />
       </div>
     </div>
   )

@@ -16,9 +16,6 @@ function AccountSetup() {
 
   const userID = userData._id
 
-  // console.log(userData)
-  // console.log(userID)
-
   const navigator = useNavigate()
 
   async function submitProfile(event) {
@@ -37,7 +34,6 @@ function AccountSetup() {
       }
     )
     if (response.ok) {
-      // console.log("Registration successful!")
       const data = await response.json()
       setUserData(data)
       navigator("/home")
@@ -115,16 +111,6 @@ function AccountSetup() {
             name="card_number"
             onChange={handleCardNumberChange}
           />
-          {/* <input
-            type="tel"
-            inputMode="numeric"
-            pattern="[0-9\s]{13,19}"
-            maxLength="19"
-            placeholder="xxxx xxxx xxxx xxxx"
-            id="card_number"
-            name="card_number"
-            onChange={handleCardNumberChange}
-          /> */}
           <InputField
             required
             label={"mm/yy *"}
@@ -151,12 +137,6 @@ function AccountSetup() {
         <div className={style.accSetupFormButton}>
           <BlueButton label={"Profile Complete"} />
         </div>
-        {/* ist hier type notwendig?? */}
-        {/* <button
-          className={style.accSetupFormButton}
-          type="submit">
-          Profile Complete
-        </button> */}
       </form>
     </div>
   )

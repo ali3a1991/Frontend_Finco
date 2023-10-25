@@ -4,7 +4,7 @@ import dayjs from "dayjs"
 import Header from "../../shared/Header/Header.jsx"
 import BlueButton from "../../shared/BlueButtons/BlueButton.jsx"
 import CreditCard from "../../shared/CreditCard/CreditCard"
-import { InputLabel, Select, MenuItem } from "@mui/material"
+import { InputLabel } from "@mui/material"
 import { OutlinedInput } from "@mui/material"
 import { InputAdornment } from "@mui/material"
 import { FormControl } from "@mui/material"
@@ -23,8 +23,6 @@ function AddIncome() {
   const { setTransactionsData } = useContext(TransactionsContext)
   const { userData } = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
-
-  console.log(userData)
 
   useEffect(() => {
     if (Object.keys(userData).length > 0) {
@@ -54,10 +52,7 @@ function AddIncome() {
     if (response.ok) {
       const data = await response.json()
       setTransactionsData(data)
-      // console.log("Submit successful!")
       event.target.reset()
-    } else {
-      // console.log("Submit failed.")
     }
   }
 
