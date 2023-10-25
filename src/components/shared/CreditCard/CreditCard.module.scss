@@ -7,4 +7,21 @@
     border-radius: 20px;
     width: 90%;
   }
+
+  p{
+    position: absolute;
+    color: white;
+    z-index: 1;
+
+    &:nth-of-type(1){
+      top: 128px;
+      left: 90px;
+    }
+
+    &:nth-of-type(2){
+      top: 168px;
+      right: 40px;
+    }
+  }
+
 }
