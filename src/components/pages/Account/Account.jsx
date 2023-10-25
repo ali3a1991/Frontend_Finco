@@ -8,13 +8,11 @@ import Feather from "../../../assets/images/feather.png"
 import Bell from "../../../assets/images/bell.png"
 import Gear from "../../../assets/images/settings.png"
 import FAQ from "../../../assets/images/help-circle.png"
-import { useLocation } from "react-router-dom"
 
 function Account() {
   const { userData } = useContext(UserContext)
 
   const card = userData.userAllCards
-
 
   return (
     <>
