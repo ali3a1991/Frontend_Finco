@@ -80,7 +80,7 @@ function Register() {
           data={"password"}
           type={"password"}
         />
-        {err && <p>{err}</p>}
+        {err && <p className={style.error_message}>{err}</p>}
         <div className={style.registerFormTerms}>
           <input
             type="checkbox"

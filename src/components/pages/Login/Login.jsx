@@ -7,11 +7,13 @@ import BlueButton from "../../shared/BlueButtons/BlueButton"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
 import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
+import { useState } from "react"
 
 function Login() {
   const navigator = useNavigate()
   const { setUserData } = useContext(UserContext)
   const { setTransactionsData } = useContext(TransactionsContext)
+  const [err, setErr] = useState("")
 
   async function submitLogin(event) {
     event.preventDefault()
@@ -33,6 +35,7 @@ function Login() {
       navigator("/home")
     } else {
       console.log("Login failed.")
+      setErr("E-Mail or Password is incorrect.")
     }
   }
 
@@ -68,6 +71,7 @@ function Login() {
         </div>
         <div className={style.loginForgot}>
           <p>Forgot password?</p>
+          {err && <p className={style.error_message}>{err}</p>}
         </div>
         <div className={style.loginBlueButton}>
           <BlueButton label={"Login"} />
