@@ -10,6 +10,7 @@ import BlueButton from "../../shared/BlueButtons/BlueButton"
 
 function AccountSetup() {
   const [selectedFile, setSelectedFile] = useState(null)
+  const [err, setErr] = useState("")
 
   const { userData, setUserData } = useContext(UserContext)
 
@@ -36,6 +37,9 @@ function AccountSetup() {
       const data = await response.json()
       setUserData(data)
       navigator("/home")
+    } else {
+      const data = await response.json()
+      setErr(data.message)
     }
   }
 
@@ -119,6 +123,16 @@ function AccountSetup() {
             maxLength={5}
             onChange={handleExpirationDateChange}
           />
+          {/* <input
+            type="text"
+            id="expiration_date"
+            name="expiration_date"
+            placeholder="MM/YY"
+            pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
+            maxLength={5}
+            onChange={handleExpirationDateChange}
+          /> */}
+          {err && <p>{err}</p>}
         </div>
         <div className={style.accSetupFormButton}>
           <BlueButton label={"Profile Complete"} />

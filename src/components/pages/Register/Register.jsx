@@ -11,6 +11,7 @@ import { UserContext } from "../../../contexts/userContext.jsx"
 
 function Register() {
   const [showTerms, setShowTerms] = useState(false)
+  const [err, setErr] = useState("")
 
   const { userData, setUserData } = useContext(UserContext)
 
@@ -31,10 +32,12 @@ function Register() {
     if (response.ok) {
       const data = await response.json()
       setUserData(data)
-      console.log("Registrierung erfolgreich!")
+      // console.log("Registrierung erfolgreich!")
       navigator("/account")
     } else {
-      console.log("Registrierung fehlgeschlagen.")
+      const data = await response.json()
+      setErr(data.error)
+      // console.log("Registrierung fehlgeschlagen.")
     }
   }
 
@@ -77,6 +80,7 @@ function Register() {
           data={"password"}
           type={"password"}
         />
+        {err && <p>{err}</p>}
         <div className={style.registerFormTerms}>
           <input
             type="checkbox"
