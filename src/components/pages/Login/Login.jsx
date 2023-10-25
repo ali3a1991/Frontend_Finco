@@ -28,13 +28,11 @@ function Login() {
       }
     )
     if (response.ok) {
-      console.log("Login successful!")
       const data = await response.json()
       setUserData(data)
       setTransactionsData(data.transactions_default_card)
       navigator("/home")
     } else {
-      console.log("Login failed.")
       setErr("E-Mail or Password is incorrect.")
     }
   }

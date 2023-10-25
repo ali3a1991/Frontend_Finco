@@ -52,10 +52,7 @@ function AddExpenses() {
     if (response.ok) {
       const data = await response.json()
       setTransactionsData(data)
-      console.log("Submit successful!")
       event.target.reset()
-    } else {
-      console.log("Submit failed.")
     }
   }
 
