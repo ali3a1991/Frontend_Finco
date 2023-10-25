@@ -10,6 +10,7 @@ import BlueButton from "../../shared/BlueButtons/BlueButton"
 
 function AccountSetup() {
   const [selectedFile, setSelectedFile] = useState(null)
+  const [err, setErr] = useState("")
 
   const { userData, setUserData } = useContext(UserContext)
 
@@ -41,7 +42,8 @@ function AccountSetup() {
       setUserData(data)
       navigator("/home")
     } else {
-      // console.log("Registration failed.")
+      const data = await response.json()
+      setErr(data.message)
     }
   }
 
@@ -144,6 +146,7 @@ function AccountSetup() {
             maxLength={5}
             onChange={handleExpirationDateChange}
           /> */}
+          {err && <p>{err}</p>}
         </div>
         <div className={style.accSetupFormButton}>
           <BlueButton label={"Profile Complete"} />
