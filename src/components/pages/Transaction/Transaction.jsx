@@ -1,19 +1,17 @@
 import React, { useContext, useEffect, useState } from "react"
+import style from "../Transaction/Transaction.module.scss"
 import TransactionItem from "../../shared/transactionItem/TransactionItem"
 import Navbar from "../../shared/Navbar/Navbar.jsx"
 import Header from "../../shared/Header/Header.jsx"
 import DateItem from "../../shared/dateItem/DateItem"
 import Filter from "../../shared/filter/Filter"
 import { TransactionsContext } from "../../../contexts/transactionsContext"
-import CircularProgress from "@mui/material/CircularProgress"
-import Box from "@mui/material/Box"
 
 function Transaction() {
   const { transactionsData } = useContext(TransactionsContext)
   const [transactions, setTransactions] = useState([])
   const [result, setResult] = useState(true)
   const [fetchData, setFetchData] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     setFetchData(transactionsData)
@@ -77,31 +75,15 @@ function Transaction() {
     else return num
   }
 
-  useEffect(() => {
-    if (transactionsData.length > 0) {
-      setIsLoading(false)
-    }
-  }, [fetchData])
-
-  return isLoading ? (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}>
-      <CircularProgress />
-    </Box>
-  ) : (
+  return (
     <>
       <Header />
       <div>
-        <p>All Transactions</p>
+        <p className={style.transactions_heading}>All Transactions</p>
         <Filter setFetchData={setFetchData} />
       </div>
       {result ? (
-        <main>
+        <main className={style.list_container}>
           {transactions.map((transaction, key) =>
             transaction.value !== "" ? (
               <TransactionItem

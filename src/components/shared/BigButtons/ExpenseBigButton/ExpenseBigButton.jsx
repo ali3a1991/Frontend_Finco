@@ -10,7 +10,7 @@ function ExpenseBigButton({ totalExpense }) {
       </div>
       <div className={style.expenseBigButtonDetails}>
         <p>Expense</p>
-        <p>-{totalExpense.toLocaleString()} €</p>
+        <p>-{totalExpense?.toLocaleString()} €</p>
       </div>
     </div>
   )

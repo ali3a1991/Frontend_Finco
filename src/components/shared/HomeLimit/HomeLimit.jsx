@@ -15,7 +15,7 @@ function HomeLimit() {
       <Limit />
       <div className={style.homeLimitText}>
         <p>Monthly spending limit:</p>
-        <p>{userData.spending_limit.toLocaleString()} €</p>
+        <p>{userData.spending_limit?.toLocaleString()} €</p>
       </div>
       <div className={style.homeLimitThreeDots}>
         <img

@@ -75,6 +75,7 @@ function Register() {
           required
           label={"Password *"}
           data={"password"}
+          type={"password"}
         />
         <div className={style.registerFormTerms}>
           <input
