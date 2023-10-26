@@ -90,7 +90,77 @@ function Report() {
                         const itemDate = new Date(item.date)
                         return itemDate >= startDate && itemDate <= endDate
                       })
-                      ?.map((item) => item.value),
+                      ?.sort((a, b) => new Date(a.date) - new Date(b.date)) // Sortieren Sie die Transaktionen nach Datum
+                      ?.reduce((acc, item) => {
+                        const lastTransaction = acc[acc.length - 1]
+                        const value =
+                          item.transaction === "expense"
+                            ? Number(-item.value)
+                            : Number(item.value) // Wenn die Kategorie "expense" ist, machen Sie den Wert negativ
+                        if (
+                          lastTransaction &&
+                          new Date(lastTransaction.date).getDate() ===
+                            new Date(item.date).getDate()
+                        ) {
+                          // Wenn es bereits eine Transaktion am selben Tag gibt, addieren Sie den Wert zur letzten Transaktion
+                          lastTransaction.value += value
+                        } else {
+                          // Andernfalls fügen Sie eine neue Transaktion hinzu
+                          const newValue =
+                            (lastTransaction ? lastTransaction.value : 0) +
+                            value // Addieren Sie den Wert zur Gesamtsumme der vorherigen Transaktionen
+                          acc.push({
+                            date: item.date,
+                            value: newValue,
+                          })
+                        }
+                        return acc
+                      }, [])
+                      ?.map((item) => {
+                        const offset =
+                          Math.abs(
+                            Math.min(
+                              ...transactionsData
+                                ?.filter((item) => {
+                                  const itemDate = new Date(item.date)
+                                  return (
+                                    itemDate >= startDate && itemDate <= endDate
+                                  )
+                                })
+                                ?.sort(
+                                  (a, b) => new Date(a.date) - new Date(b.date)
+                                ) // Sortieren Sie die Transaktionen nach Datum
+                                ?.reduce((acc, item) => {
+                                  const lastTransaction = acc[acc.length - 1]
+                                  const value =
+                                    item.transaction === "expense"
+                                      ? Number(-item.value)
+                                      : Number(item.value) // Wenn die Kategorie "expense" ist, machen Sie den Wert negativ
+                                  if (
+                                    lastTransaction &&
+                                    new Date(lastTransaction.date).getDate() ===
+                                      new Date(item.date).getDate()
+                                  ) {
+                                    // Wenn es bereits eine Transaktion am selben Tag gibt, addieren Sie den Wert zur letzten Transaktion
+                                    lastTransaction.value += value
+                                  } else {
+                                    // Andernfalls fügen Sie eine neue Transaktion hinzu
+                                    const newValue =
+                                      (lastTransaction
+                                        ? lastTransaction.value
+                                        : 0) + value // Addieren Sie den Wert zur Gesamtsumme der vorherigen Transaktionen
+                                    acc.push({
+                                      date: item.date,
+                                      value: newValue,
+                                    })
+                                  }
+                                  return acc
+                                }, [])
+                                ?.map((item) => item.value)
+                            )
+                          ) + 1
+                        return item.value < 0 ? item.value + offset : item.value
+                      }),
                     label: "Transaction Value",
                     area: true,
                     showMark: false,
@@ -105,7 +175,32 @@ function Report() {
                         const itemDate = new Date(item.date)
                         return itemDate >= startDate && itemDate <= endDate
                       })
-                      ?.reverse()
+                      ?.sort((a, b) => new Date(a.date) - new Date(b.date)) // Sortieren Sie die Transaktionen nach Datum
+                      ?.reduce((acc, item) => {
+                        const lastTransaction = acc[acc.length - 1]
+                        const value =
+                          item.transaction === "expense"
+                            ? Number(-item.value)
+                            : Number(item.value) // Wenn die Kategorie "expense" ist, machen Sie den Wert negativ
+                        if (
+                          lastTransaction &&
+                          new Date(lastTransaction.date).getDate() ===
+                            new Date(item.date).getDate()
+                        ) {
+                          // Wenn es bereits eine Transaktion am selben Tag gibt, addieren Sie den Wert zur letzten Transaktion
+                          lastTransaction.value += value
+                        } else {
+                          // Andernfalls fügen Sie eine neue Transaktion hinzu
+                          const newValue =
+                            (lastTransaction ? lastTransaction.value : 0) +
+                            value // Addieren Sie den Wert zur Gesamtsumme der vorherigen Transaktionen
+                          acc.push({
+                            date: item.date,
+                            value: newValue,
+                          })
+                        }
+                        return acc
+                      }, [])
                       ?.map(
                         (item) =>
                           `${new Date(item.date).getDate()}-${new Date(

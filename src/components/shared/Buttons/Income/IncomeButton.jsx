@@ -23,13 +23,21 @@ function IncomeButton({ handleIncomeFilter, totalIncome, incomeActive }) {
     0
   )
 
+  function removeTime(dateObject) {
+    return new Date(
+      dateObject.getFullYear(),
+      dateObject.getMonth(),
+      dateObject.getDate()
+    )
+  }
+
   const earliestTransaction = transactionsData.reduce(
     (earliest, transaction) => {
-      const transactionDate = new Date(transaction.date)
+      const transactionDate = removeTime(new Date(transaction.date))
       if (
         (!earliest || transactionDate < earliest) &&
-        transactionDate >= startDate &&
-        transactionDate <= endDate
+        transactionDate >= removeTime(startDate) &&
+        transactionDate <= removeTime(endDate)
       ) {
         return transactionDate
       }
@@ -38,15 +46,19 @@ function IncomeButton({ handleIncomeFilter, totalIncome, incomeActive }) {
     null
   )
 
-  const balanceAtEarliestTransaction = transactionsData.reduce(
+  const transactionsAtEarliestDate = transactionsData.filter((transaction) => {
+    const transactionDate = removeTime(new Date(transaction.date))
+    return transactionDate.getTime() === earliestTransaction.getTime()
+  })
+
+  console.log(transactionsAtEarliestDate)
+
+  const balanceAtEarliestTransaction = transactionsAtEarliestDate.reduce(
     (balance, transaction) => {
-      const transactionDate = new Date(transaction.date)
-      if (transactionDate.getTime() === earliestTransaction.getTime()) {
-        if (transaction.transaction === "income") {
-          return balance + transaction.value
-        } else if (transaction.transaction === "expense") {
-          return balance - transaction.value
-        }
+      if (transaction.transaction === "income") {
+        return balance + Number(transaction.value)
+      } else if (transaction.transaction === "expense") {
+        return balance - Number(transaction.value)
       }
       return balance
     },
