@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React from "react"
 import style from "../../shared/transactionSearchFilter/TransactionSearchFilter.module.scss"
 import InputField from "../../shared/Input/InputField.jsx"
 import searchIcon from "../../../assets/images/search.svg"

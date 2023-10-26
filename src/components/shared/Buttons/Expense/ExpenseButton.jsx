@@ -4,10 +4,11 @@ import style from "./ExpenseButton.module.scss"
 import { useLocation } from "react-router-dom"
 import { useContext } from "react"
 import { TransactionsContext } from "../../../../contexts/transactionsContext.jsx"
+import { DarkModeContext } from "../../../../contexts/darkModeContext.jsx"
 
 function ExpenseButton({ totalExpense, handleExpenseFilter, expenseActive }) {
   const path = useLocation()
-
+  const { darkModeData } = useContext(DarkModeContext)
   const { transactionsData } = useContext(TransactionsContext)
 
   const currentMonth = new Date()
@@ -36,7 +37,9 @@ function ExpenseButton({ totalExpense, handleExpenseFilter, expenseActive }) {
 
   return (
     <div
-      className={`${style.expenseButton} ${expenseActive && "active"}`}
+      className={`${style.expenseButton} ${expenseActive && style.active} ${
+        darkModeData && style.darkmode
+      } ${darkModeData && expenseActive && style.darkmodeActive}`}
       onClick={path.pathname === "/transactions" ? handleExpenseFilter : null}>
       <ExpenseTrend />
       <div>

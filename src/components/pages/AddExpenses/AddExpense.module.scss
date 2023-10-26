@@ -1,5 +1,9 @@
+.addExpensePage {
+  min-height: 100vh;
+}
+
 .addExpenseHeadline {
-  padding: 0 0 0 24px;
+  padding: 10px 0 0 24px;
   margin-bottom: 2rem;
   font-size: 2rem;
   color: #ffaa1a;
@@ -54,4 +58,14 @@
 
 .addExpenseFormBlueButton {
   text-align: center;
+}
+
+.darkmode {
+  select {
+    background-color: #dddddd;
+  }
+
+  .addExpenseFormDatePicker{
+    background-color: #dddddd;
+  }
 }

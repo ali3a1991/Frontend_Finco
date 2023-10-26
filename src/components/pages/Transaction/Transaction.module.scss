@@ -4,6 +4,7 @@
   font-weight: 700;
   color: #0d1636;
   padding-bottom: 20px;
+  padding-top: 10px;
 }
 
 .list_container {
@@ -18,4 +19,12 @@
   margin-left: 28px;
   opacity: 0.7;
   font-weight: 400;
+}
+
+.darkmode{
+  min-height: 100vh;
+
+  .transactions_heading {
+    color: rgb(217, 217, 217);
+  }
 }

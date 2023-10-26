@@ -1,5 +1,5 @@
 .logoutButton {
-  width: 90%;
+  width: 89%;
   text-align: center;
   margin: 0 24px 1.5rem 24px;
   padding: 24px;
@@ -11,12 +11,24 @@
   font-weight: 700;
   border: none;
 
+  img{
+    border-radius: 50%;
+    background-color: #f7f7f7;
+    padding: 2px;
+  }
+
   div {
     display: flex;
+    align-items: center;
     gap: 8px;
   }
 
   p {
     font-size: 1rem;
   }
+}
+
+.darkmode {
+  background-color: #1e1e1e;
+  color: rgb(217, 217, 217);
 }

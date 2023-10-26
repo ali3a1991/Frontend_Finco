@@ -12,16 +12,21 @@ import Report from "./components/pages/Report/Report.jsx"
 import Account from "./components/pages/Account/Account.jsx"
 import Protected from "./components/shared/Protected/Protected.jsx"
 import AutoRouter from "./components/shared/Protected/AutoRouter.jsx"
+import style from "../src/App.module.scss"
+import { useContext } from "react"
+import { DarkModeContext } from "./contexts/darkModeContext.jsx"
 
 function App() {
+  const { darkModeData } = useContext(DarkModeContext)
+
   return (
-    <>
+    <div className={darkModeData ? style.darkmode : ""}>
       <Routes>
         <Route
           path="/"
           element={<OnboardingScreen />}
         />
-        <Route element={ <AutoRouter/>} >
+        <Route element={<AutoRouter />}>
           <Route
             path="/login"
             element={<Login />}
@@ -66,7 +71,7 @@ function App() {
           />
         </Route>
       </Routes>
-    </>
+    </div>
   )
 }
 

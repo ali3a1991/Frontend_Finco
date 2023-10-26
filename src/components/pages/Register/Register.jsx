@@ -8,6 +8,7 @@ import InputField from "../../shared/Input/InputField.jsx"
 import BlueButton from "../../shared/BlueButtons/BlueButton.jsx"
 import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
+import { DarkModeContext } from "../../../contexts/darkModeContext.jsx"
 
 function Register() {
   const [showTerms, setShowTerms] = useState(false)

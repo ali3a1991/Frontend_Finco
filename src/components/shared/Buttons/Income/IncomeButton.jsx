@@ -4,10 +4,11 @@ import style from "./IncomeButton.module.scss"
 import { useLocation } from "react-router-dom"
 import { useContext } from "react"
 import { TransactionsContext } from "../../../../contexts/transactionsContext.jsx"
+import { DarkModeContext } from "../../../../contexts/darkModeContext.jsx"
 
 function IncomeButton({ handleIncomeFilter, totalIncome, incomeActive }) {
   const path = useLocation()
-
+  const { darkModeData } = useContext(DarkModeContext)
   const { transactionsData } = useContext(TransactionsContext)
 
   const currentMonth = new Date()
@@ -54,7 +55,9 @@ function IncomeButton({ handleIncomeFilter, totalIncome, incomeActive }) {
 
   return (
     <div
-      className={`${style.incomeButton} ${incomeActive && "active"}`}
+      className={`${style.incomeButton} ${incomeActive && style.active} ${
+        darkModeData && style.darkmode
+      } ${darkModeData && incomeActive && style.darkmodeActive}`}
       onClick={path.pathname === "/transactions" ? handleIncomeFilter : null}>
       <IncomeTrend />
       <div>
