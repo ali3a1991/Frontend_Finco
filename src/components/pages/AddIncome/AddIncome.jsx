@@ -81,7 +81,7 @@ function AddIncome() {
           <form
             className={style.addIncomeForm}
             onSubmit={submitIncome}>
-            <select
+            {/* <select
               className={style.addIncomeFormSelect}
               name="card_id"
               id="card_id">
@@ -92,7 +92,7 @@ function AddIncome() {
                   {card.card_number}
                 </option>
               ))}
-            </select>
+            </select> */}
             <div className={style.addIncomeFormCard}>
               <CreditCard />
             </div>
