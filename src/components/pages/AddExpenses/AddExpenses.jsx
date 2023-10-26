@@ -81,7 +81,7 @@ function AddExpenses() {
           <form
             className={style.addExpenseForm}
             onSubmit={submitExpense}>
-            <select
+            {/* <select
               className={style.addExpenseFormSelect}
               name="card_id"
               id="card_id">
@@ -92,7 +92,7 @@ function AddExpenses() {
                   {card.card_number}
                 </option>
               ))}
-            </select>
+            </select> */}
             <div className={style.addExpenseFormCard}>
               <CreditCard />
             </div>
