@@ -17,12 +17,14 @@ import { TransactionsContext } from "../../../contexts/transactionsContext"
 import { UserContext } from "../../../contexts/userContext"
 import CircularProgress from "@mui/material/CircularProgress"
 import Box from "@mui/material/Box"
+import { DarkModeContext } from "../../../contexts/darkModeContext"
 
 function AddIncome() {
   const [selectedDate, setSelectedDate] = useState(dayjs())
   const { setTransactionsData } = useContext(TransactionsContext)
   const { userData } = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
+  const { darkModeData } = useContext(DarkModeContext)
 
   useEffect(() => {
     if (Object.keys(userData).length > 0) {
@@ -67,11 +69,12 @@ function AddIncome() {
       <CircularProgress />
     </Box>
   ) : (
-    <>
+    <div className={style.addIncomePage}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["MobileDateTimePicker"]}></DemoContainer>
         <Header />
-        <section className={style.addIncome}>
+        <section
+          className={`${style.addIncome} ${darkModeData && style.darkmode}`}>
           <div className={style.addIncomeHeadline}>
             <h1>Add income</h1>
           </div>
@@ -94,7 +97,13 @@ function AddIncome() {
               <CreditCard />
             </div>
             <div className={style.addIncomeFormInput}>
-              <FormControl sx={{ m: 1, width: "90%" }}>
+              <FormControl
+                sx={{
+                  m: 1,
+                  width: "90%",
+                  background: `${darkModeData && "#dddddd"}`,
+                  borderRadius: `${darkModeData && "30px"}`,
+                }}>
                 <InputLabel htmlFor="outlined-adornment-amount">
                   Amount
                 </InputLabel>
@@ -138,7 +147,7 @@ function AddIncome() {
           </form>
         </section>
       </LocalizationProvider>
-    </>
+    </div>
   )
 }
 

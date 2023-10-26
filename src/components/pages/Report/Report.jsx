@@ -8,10 +8,12 @@ import TransactionFilter from "../../shared/transactionFilter/TransactionFilter.
 import TransactionItem from "../../shared/transactionItem/TransactionItem.jsx"
 import { useContext } from "react"
 import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
+import { DarkModeContext } from "../../../contexts/darkModeContext"
 
 function Report() {
   const { transactionsData } = useContext(TransactionsContext)
   const [visibleItems, setVisibleItems] = useState(10)
+  const { darkModeData } = useContext(DarkModeContext)
 
   const handleLoadMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 10)
@@ -34,7 +36,10 @@ function Report() {
 
   return (
     <>
-      <div className={style.report_container}>
+      <div
+        className={`${style.report_container} ${
+          darkModeData && style.darkmode
+        }`}>
         <Header />
         <div>
           <h1 className={style.report_heading}>Report</h1>

@@ -1,5 +1,9 @@
+.addIncomePage {
+  min-height: 100vh;
+}
+
 .addIncomeHeadline {
-  padding: 0 0 0 24px;
+  padding: 10px 0 0 24px;
   margin-bottom: 2rem;
   font-size: 2rem;
   color: #298bff;
@@ -55,3 +59,13 @@
 .addIncomeFormBlueButton {
   text-align: center;
 }
+
+.darkmode {
+  select {
+    background-color: #dddddd;
+  }
+  .addIncomeFormDatePicker{
+    background-color: #dddddd;
+  }
+}
+

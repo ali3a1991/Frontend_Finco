@@ -1,12 +1,15 @@
-import React from "react"
+import React, { useContext } from "react"
 import style from "./AddMenu.module.scss"
 import union from "../../../../assets/images/Union.svg"
 import { Link } from "react-router-dom"
+import { DarkModeContext } from "../../../../contexts/darkModeContext"
 
 function AddMenu() {
+  const { darkModeData } = useContext(DarkModeContext)
+
   return (
     <section>
-      <div className={style.add_menu}>
+      <div className={`${style.add_menu} ${darkModeData && style.darkmode}`}>
         <div className={style.menu_wrapper}>
           <img
             src={union}

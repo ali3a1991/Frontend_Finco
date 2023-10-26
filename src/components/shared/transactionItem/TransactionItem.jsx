@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useContext } from "react"
 import style from "../transactionItem/TransactionItem.module.scss"
 import salaryIcon from "../../../assets/images/sallary.png"
 import insuranceIcon from "../../../assets/images/insurance.png"
 import rentIcon from "../../../assets/images/rent.png"
 import shoppingIcon from "../../../assets/images/shopping.png"
 import foodAndDrinkIcon from "../../../assets/images/foodanddrink.png"
+import { DarkModeContext } from "../../../contexts/darkModeContext"
 
 function TransactionItem({ transaction }) {
+  const { darkModeData } = useContext(DarkModeContext)
   const dateStructure = (dateNumber) => {
     const date = new Date(dateNumber)
     const dateArray = date.toUTCString().split(" ").splice(1, 3).join(" ")
@@ -16,7 +18,8 @@ function TransactionItem({ transaction }) {
   }
 
   return (
-    <div className={style.item_container}>
+    <div
+      className={`${style.item_container} ${darkModeData && style.darkmode}`}>
       <div className={style.container_left}>
         <div className={style.icon_container}>
           {transaction.category === "Salary" && (

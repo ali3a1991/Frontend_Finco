@@ -5,9 +5,11 @@ import Arrow from "../../../../../assets/images/arrow-right.svg"
 import { useContext } from "react"
 import { UserContext } from "../../../../../contexts/userContext.jsx"
 import { useNavigate } from "react-router-dom"
+import { DarkModeContext } from "../../../../../contexts/darkModeContext"
 
 function LogoutButton() {
   const { setUserData } = useContext(UserContext)
+  const { darkModeData } = useContext(DarkModeContext)
 
   const navigator = useNavigate()
 
@@ -27,7 +29,7 @@ function LogoutButton() {
   return (
     <div>
       <button
-        className={style.logoutButton}
+        className={`${style.logoutButton} ${darkModeData && style.darkmode}`}
         onClick={logout}>
         <div>
           <img

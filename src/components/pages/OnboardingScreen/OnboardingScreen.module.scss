@@ -1,5 +1,10 @@
+.onboarding {
+  min-height: 100vh;
+}
+
 .splash {
   height: 100vh;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,5 +58,11 @@
     text-decoration: none;
     color: black;
     font-weight: 700;
+  }
+}
+
+.darkmode {
+  .skip {
+    color: rgb(147, 147, 147);
   }
 }

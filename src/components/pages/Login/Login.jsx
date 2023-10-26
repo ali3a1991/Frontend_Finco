@@ -8,12 +8,14 @@ import { useContext } from "react"
 import { UserContext } from "../../../contexts/userContext.jsx"
 import { TransactionsContext } from "../../../contexts/transactionsContext.jsx"
 import { useState } from "react"
+import { DarkModeContext } from "../../../contexts/darkModeContext"
 
 function Login() {
   const navigator = useNavigate()
   const { setUserData } = useContext(UserContext)
   const { setTransactionsData } = useContext(TransactionsContext)
   const [err, setErr] = useState("")
+  const { darkModeData } = useContext(DarkModeContext)
 
   async function submitLogin(event) {
     event.preventDefault()
@@ -38,7 +40,7 @@ function Login() {
   }
 
   return (
-    <div className={style.login}>
+    <div className={`${style.login} ${darkModeData && style.darkmode}`}>
       <div className={style.loginLogo}>
         <img
           src={Logo}

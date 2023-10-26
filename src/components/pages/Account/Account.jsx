@@ -10,55 +10,68 @@ import FAQ from "../../../assets/images/help-circle.png"
 import Arrow from "../../../assets/images/arrow-right.svg"
 import { useLocation } from "react-router-dom"
 import LogoutButton from "./Button/LogoutButton/LogoutButton.jsx"
+import { DarkModeContext } from "../../../contexts/darkModeContext"
 
 function Account() {
   const { userData } = useContext(UserContext)
+  const { darkModeData, setDarkModeData } = useContext(DarkModeContext)
 
   const card = userData.userAllCards
+
+  const handleDarkMode = () => {
+    setDarkModeData((prev) => !prev)
+  }
 
   return (
     <>
       <Header />
-      <div className={style.account}>
+      <div className={`${style.account} ${darkModeData && style.darkmode}`}>
         <div className={style.accountFeather}>
           <div className={style.accountFeatherDiv}>
             <img src={Feather} />
             <p>My wallet</p>
           </div>
-          <img
-            src={Arrow}
-            alt=""
-          />
+          <div>
+            <img
+              src={Arrow}
+              alt=""
+            />
+          </div>
         </div>
         <div className={style.accountBell}>
           <div>
             <img src={Bell} />
             <p>Dark mode</p>
           </div>
-          <img
-            src={Arrow}
-            alt=""
-          />{" "}
+          <h2
+            onClick={handleDarkMode}
+            className={darkModeData ? style.darkmodeBg : style.lightmodeBg}>
+            <p className={style.darkmodeBtn}></p>
+          </h2>
         </div>
         <div className={style.accountGear}>
           <div>
             <img src={Gear} />
             <p>Settings</p>
           </div>
-          <img
-            src={Arrow}
-            alt=""
-          />{" "}
+          <div>
+            <img
+              src={Arrow}
+              alt=""
+            />
+          </div>{" "}
         </div>
         <div className={style.accountFAQ}>
           <div>
             <img src={FAQ} />
             <p>FAQ</p>
           </div>
-          <img
-            src={Arrow}
-            alt=""
-          />
+          <div>
+            <img
+              src={Arrow}
+              alt=""
+            />
+          </div>
         </div>
         <div className={style.accountLogout}>
           <LogoutButton />
