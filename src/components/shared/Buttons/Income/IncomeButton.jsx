@@ -51,8 +51,6 @@ function IncomeButton({ handleIncomeFilter, totalIncome, incomeActive }) {
     return transactionDate.getTime() === earliestTransaction.getTime()
   })
 
-  console.log(transactionsAtEarliestDate)
-
   const balanceAtEarliestTransaction = transactionsAtEarliestDate.reduce(
     (balance, transaction) => {
       if (transaction.transaction === "income") {
