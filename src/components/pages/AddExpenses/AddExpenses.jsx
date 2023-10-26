@@ -40,7 +40,7 @@ function AddExpenses() {
     const form = new FormData(event.target)
 
     form.append("date", selectedDate.toString())
-
+    form.append("card_id", userData.userAllCards[0]._id)
     form.append("transaction", "expense")
 
     const response = await fetch(
